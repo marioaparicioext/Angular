@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Empleado } from './empleado';
+import { Empleado } from '../../modelos/empleado';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,19 +12,23 @@ export class EmpleadoServicio {
     constructor(private http: HttpClient) { }
 
     public obtenerEmpleados(): Observable<Empleado[]> {
-        return this.http.get<Empleado[]>(`${this.apiServeUrl}/empleado/listar`);
+        return this.http.get<Empleado[]>(`${this.apiServeUrl}/empleados/listar`);
     }
 
     public anadirEmpleado(empleado: Empleado): Observable<Empleado> {
-        return this.http.post<Empleado>(`${this.apiServeUrl}/empleado/anadir`, empleado);
+        return this.http.post<Empleado>(`${this.apiServeUrl}/empleados/anadir`, empleado);
     }
 
     public modificarEmpleado(empleado: Empleado): Observable<Empleado> {
-        return this.http.put<Empleado>(`${this.apiServeUrl}/empleado/modificar`, empleado);
+        return this.http.put<Empleado>(`${this.apiServeUrl}/empleados/modificar`, empleado);
     }
 
     public borrarEmpleado(empleadoId: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiServeUrl}/empleado/borrar/${empleadoId}`);
+        return this.http.delete<void>(`${this.apiServeUrl}/empleados/borrar/${empleadoId}`);
+    }
+
+    public obtenerEmpleadoPorId(empleadoId: number): Observable<Empleado>{
+        return this.http.get<Empleado>(`${this.apiServeUrl}/empleados/${empleadoId}`);
     }
 
 }

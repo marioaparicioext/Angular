@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmpleadoServicio } from './empleado.servicio';
+import { EmpleadoServicio } from './empleado/servicios/empleado.servicio';
 
 @NgModule({
   declarations: [

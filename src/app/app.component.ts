@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Empleado } from './empleado';
-import { EmpleadoServicio } from './empleado.servicio';
+import { Empleado } from './modelos/empleado';
+import { EmpleadoServicio } from './empleado/servicios/empleado.servicio';
 
 @Component({
   selector: 'app-root',
@@ -13,19 +13,10 @@ export class AppComponent implements OnInit{
 
   constructor(private empleadoServicio: EmpleadoServicio){}
   ngOnInit(): void {
-    this.obtenerEmpleados();
+    //this.obtenerEmpleados();
   }
 
-  public obtenerEmpleados(): void{
-    this.empleadoServicio.obtenerEmpleados().subscribe(
-      (response: Empleado[]) => {
-        this.empleados = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
-  }
+  
 
   
 }
