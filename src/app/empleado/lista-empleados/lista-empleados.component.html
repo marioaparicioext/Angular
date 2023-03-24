@@ -2,28 +2,31 @@
 <html>
 
 
-<title>Lista de Empleados</title>
-<link rel="stylesheet" type="text/css" href="estilos.css">
 
 <h1>Lista de Empleados</h1>
-<ul>
-    <li>
-        <span class="nombre">Juan</span>
-        <span class="apellido">Pérez</span>
-        <span class="email">juanperez@example.com</span>
-    </li>
-    <li>
-        <span class="nombre">María</span>
-        <span class="apellido">González</span>
-        <span class="email">mariagonzalez@example.com</span>
-    </li>
-    <li>
-        <span class="nombre">Pedro</span>
-        <span class="apellido">Rodríguez</span>
-        <span class="email">pedrorodriguez@example.com</span>
-    </li>
-</ul>
-
+<table *ngIf="empleados && empleados.length > 0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empleado of empleados">
+            <td>{{empleado.id}}</td>
+            <td>{{empleado.nombre}}</td>
+            <td>{{empleado.apellidos}}</td>
+            <td>{{empleado.email}}</td>
+            <td>{{empleado.rol_id}}</td>
+            <td>
+                <button (click)="eliminarEmpleado(empleado.id)"></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 </html>
 tiene menú contextual
