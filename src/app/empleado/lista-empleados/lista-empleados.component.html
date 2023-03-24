@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
-
-
-
 <h1>Lista de Empleados</h1>
+<div *ngIf="!empleados || empleados.length == 0 "></div>
 <table *ngIf="empleados && empleados.length > 0">
     <thead>
         <tr>
@@ -29,4 +27,3 @@
 </table>
 
 </html>
-tiene menú contextual

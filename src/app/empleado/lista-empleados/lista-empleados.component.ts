@@ -19,6 +19,7 @@ export class ListaEmpleadosComponent implements OnInit {
   public obtenerEmpleados(): void{
     this.empleadoServicio.obtenerEmpleados().subscribe(
       (response: Empleado[]) => {
+        console.log("LLAMADA AL MÉTODO DE OBTENCION DE EMPLEADOS")
         this.empleados = response;
       },
       (error: HttpErrorResponse) => {
