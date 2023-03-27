@@ -4,6 +4,7 @@ import { ListaEmpleadosComponent } from './lista-empleados/lista-empleados.compo
 import { EditarEmpleadoComponent } from './editar-empleado/editar-empleado.component';
 import { AnadirEmpleadoComponent } from './anadir-empleado/anadir-empleado.component';
 import { BorrarEmpleadoComponent } from './borrar-empleado/borrar-empleado.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { BorrarEmpleadoComponent } from './borrar-empleado/borrar-empleado.compo
     BorrarEmpleadoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class EmpleadoModule { }

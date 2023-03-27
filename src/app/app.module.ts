@@ -1,11 +1,14 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+//import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmpleadoModule } from './empleado/empleado.module';
 import { EmpleadoServicio } from './empleado/servicios/empleado.servicio';
+import { RolServicio } from './rol/servicios/rol.servicio';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,9 +18,10 @@ import { EmpleadoServicio } from './empleado/servicios/empleado.servicio';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    EmpleadoModule
+    EmpleadoModule,
+    SharedModule
   ],
-  providers: [EmpleadoServicio],
+  providers: [EmpleadoServicio, RolServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

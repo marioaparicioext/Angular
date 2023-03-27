@@ -1,7 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Empleado } from 'src/app/modelos/empleado';
+import { Rol } from 'src/app/modelos/rol';
+import { RolServicio } from 'src/app/rol/servicios/rol.servicio';
 import { EmpleadoServicio } from '../servicios/empleado.servicio';
+
 
 @Component({
   selector: 'app-anadir-empleado',
@@ -9,23 +12,37 @@ import { EmpleadoServicio } from '../servicios/empleado.servicio';
   styleUrls: ['./anadir-empleado.component.css']
 })
 export class AnadirEmpleadoComponent implements OnInit {
-  
-  constructor(private empleadoServicio: EmpleadoServicio){
-  }
-  ngOnInit(): void {
+  empleado = new Empleado();
+  roles: Rol[];
+  constructor(private empleadoServicio: EmpleadoServicio, private rolServicio: RolServicio) {
     
   }
-    public anadirEmpleado(empleado: Empleado): void {
-    this.empleadoServicio.anadirEmpleado(empleado).subscribe(
+  ngOnInit(): void {
+    this.rolServicio.obtenerRoles().subscribe(roles => { this.roles = roles });
+    console.log(this.roles)
+  }
+  public anadirEmpleado(): void {
+    const role = this.roles.find(rol => rol.descripcion === this.empleado.rol.descripcion)
+    const rol = new Rol()
+    if (role) {
+      rol.id = role.id
+      rol.descripcion = role.descripcion
+    }
+
+    const password = Array(20).fill('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$')
+      .map(x => x[Math.floor(crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1) * x.length)]).join('');
+    const empleadoConRol = { ...this.empleado, rol: rol, contrasena: password }
+
+    this.empleadoServicio.anadirEmpleado(empleadoConRol).subscribe(
       () => {
-        //duda
-        this.anadirEmpleado(empleado);
+        console.log("Empleado anadido")
+        console.log(empleadoConRol)
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     )
   }
-  
-   
+
+
 }
