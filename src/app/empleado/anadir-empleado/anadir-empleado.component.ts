@@ -13,6 +13,7 @@ import { EmpleadoServicio } from '../servicios/empleado.servicio';
 })
 export class AnadirEmpleadoComponent implements OnInit {
   empleado = new Empleado();
+  desc: String
   roles: Rol[];
   constructor(private empleadoServicio: EmpleadoServicio, private rolServicio: RolServicio) {
   }
@@ -28,7 +29,7 @@ export class AnadirEmpleadoComponent implements OnInit {
       });
   }
   public anadirEmpleado(): void {
-    const role = this.roles.find(rol => rol.descripcion === this.empleado.rol.descripcion)
+    const role = this.roles.find(rol => rol.descripcion === this.desc)
     console.log(role)
     const rol = new Rol()
     if (role) {

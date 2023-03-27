@@ -35,20 +35,20 @@
                 </label>
             </div>-->
 
-            <!--<div class="form-check">
+            <div class="form-check">
                 <label>Rol</label>
                 <div *ngFor="let rol of roles">
                 <label>
-                    <input class="form-check-input" type="radio" name="rol" id="radio_value" [(ngModel)]="empleado.rol.descripcion" [value]="rol.descripcion" required>{{rol.descripcion}}
+                    <input class="form-check-input" type="radio" name="rol" [value]="rol.descripcion" [(ngModel)]="desc" required>{{rol.descripcion}}
                 </label>
                 </div>
-            </div>-->
-            <div>
+            </div>
+            <!--<div>
                 <label for="rol"></label>
                 <select id="rol" name="rol" [(ngModel)]="empleado.rol.descripcion" required="true">
                     <option *ngFor="let rol of roles" [value]="rol.descripcion">{{rol.descripcion}}</option>
                 </select>
-            </div>
+            </div>-->
 
             <button type="submit" class="btn btn-success">Confirmar</button>
         </div>
