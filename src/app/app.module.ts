@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmpleadoModule } from './empleado/empleado.module';
 import { EmpleadoServicio } from './empleado/servicios/empleado.servicio';
+import { RolModule } from './rol/rol.module';
 import { RolServicio } from './rol/servicios/rol.servicio';
 import { SharedModule } from './shared/shared.module';
 
@@ -19,7 +20,8 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     AppRoutingModule,
     EmpleadoModule,
-    SharedModule
+    SharedModule,
+    RolModule
   ],
   providers: [EmpleadoServicio, RolServicio],
   bootstrap: [AppComponent]

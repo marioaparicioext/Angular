@@ -27,7 +27,6 @@ export class ListaEmpleadosComponent implements OnInit {
   }
 
   public eliminarEmpleado(id: number): void{
-    
     this.empleadoServicio.borrarEmpleado(id).subscribe(
       () => {
         //Duda

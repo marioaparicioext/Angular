@@ -45,7 +45,7 @@
             </div>-->
             <div>
                 <label for="rol"></label>
-                <select id="rol" name="rol" [(ngModel)]="empleado.rol.descripcion" required>
+                <select id="rol" name="rol" [(ngModel)]="empleado.rol.descripcion" required="true">
                     <option *ngFor="let rol of roles" [value]="rol.descripcion">{{rol.descripcion}}</option>
                 </select>
             </div>

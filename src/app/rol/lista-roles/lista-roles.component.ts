@@ -1,4 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Rol } from 'src/app/modelos/rol';
+import { RolServicio } from '../servicios/rol.servicio';
 
 @Component({
   selector: 'app-lista-roles',
@@ -6,5 +9,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./lista-roles.component.css']
 })
 export class ListaRolesComponent {
-
+  roles: Rol[];
+  constructor(private rolServicio: RolServicio){
+  }
+  ngOnInit(): void {
+    this.obtenerRoles();
+  }
+  public obtenerRoles(): void{
+    this.rolServicio.obtenerRoles().subscribe(
+      (response: Rol[]) => {
+        this.roles = response;
+        console.log(this.roles)
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
 }

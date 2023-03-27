@@ -15,24 +15,29 @@ export class AnadirEmpleadoComponent implements OnInit {
   empleado = new Empleado();
   roles: Rol[];
   constructor(private empleadoServicio: EmpleadoServicio, private rolServicio: RolServicio) {
-    
   }
   ngOnInit(): void {
-    this.rolServicio.obtenerRoles().subscribe(roles => { this.roles = roles });
-    console.log(this.roles)
+    this.obtenerRoles()
+  }
+  public obtenerRoles(): void {
+    this.rolServicio.obtenerRoles().subscribe((response: Rol[]) => {
+      this.roles = response;
+    },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
   }
   public anadirEmpleado(): void {
+    console.log
     const role = this.roles.find(rol => rol.descripcion === this.empleado.rol.descripcion)
     const rol = new Rol()
     if (role) {
       rol.id = role.id
       rol.descripcion = role.descripcion
     }
-
     const password = Array(20).fill('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$')
       .map(x => x[Math.floor(crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1) * x.length)]).join('');
     const empleadoConRol = { ...this.empleado, rol: rol, contrasena: password }
-
     this.empleadoServicio.anadirEmpleado(empleadoConRol).subscribe(
       () => {
         console.log("Empleado anadido")
