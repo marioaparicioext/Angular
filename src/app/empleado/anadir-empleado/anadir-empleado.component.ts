@@ -28,8 +28,8 @@ export class AnadirEmpleadoComponent implements OnInit {
       });
   }
   public anadirEmpleado(): void {
-    console.log
     const role = this.roles.find(rol => rol.descripcion === this.empleado.rol.descripcion)
+    console.log(role)
     const rol = new Rol()
     if (role) {
       rol.id = role.id
