@@ -8,7 +8,7 @@ import { Vacaciones } from "../../modelos/vacaciones";
     providedIn: 'root'
 })
 
-export class EmpleadoServicio {
+export class VacacionesServicio {
     private apiServeUrl = 'http://localhost:8080';
 
     constructor(private http: HttpClient) { }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListaVacacionesComponent } from './lista-vacaciones/lista-vacaciones.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -9,7 +11,9 @@ import { ListaVacacionesComponent } from './lista-vacaciones/lista-vacaciones.co
     ListaVacacionesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild([])
   ]
 })
 export class VacacionesModule { }

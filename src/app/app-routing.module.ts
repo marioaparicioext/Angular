@@ -4,6 +4,7 @@ import { AnadirEmpleadoComponent } from './empleado/anadir-empleado/anadir-emple
 import { EditarEmpleadoComponent } from './empleado/editar-empleado/editar-empleado.component';
 import { ListaEmpleadosComponent } from './empleado/lista-empleados/lista-empleados.component';
 import { ListaRolesComponent } from './rol/lista-roles/lista-roles.component';
+import { ListaVacacionesComponent } from './vacaciones/lista-vacaciones/lista-vacaciones.component';
 
 const routes: Routes = [
   {path: '',redirectTo:'/empleados/listar', pathMatch:'full'},
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path:'empleados/listar', component: ListaEmpleadosComponent},
   {path:'empleados/anadir', component: AnadirEmpleadoComponent},
   {path:'roles/listar', component: ListaRolesComponent},
-  {path:'empleados/editar/:id', component: EditarEmpleadoComponent}
+  {path:'empleados/modificar/:id', component: EditarEmpleadoComponent},
+  {path: 'vacaciones/listar', component: ListaVacacionesComponent}
 ];
 
 @NgModule({
