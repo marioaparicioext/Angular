@@ -20,7 +20,7 @@
             <td>{{empleado.email}}</td>
             <td>{{empleado.rol.descripcion}}</td>
             <td><button class="btn btn-danger" (click)="eliminarEmpleado(empleado.id)">Eliminar</button></td>
-            <!--<td><button type="button" class="btn btn-default" (click)="editarEmpleado(empleado)">Editar</button></td>-->
+            <td><button class="btn btn-sucess" [routerLink]="['empleados/editar', empleado.id]" ></button></td>
         </tr>
     </tbody>
     <div class = "col-md-3"></div>

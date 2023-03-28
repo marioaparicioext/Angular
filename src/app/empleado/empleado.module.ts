@@ -5,6 +5,7 @@ import { EditarEmpleadoComponent } from './editar-empleado/editar-empleado.compo
 import { AnadirEmpleadoComponent } from './anadir-empleado/anadir-empleado.component';
 import { BorrarEmpleadoComponent } from './borrar-empleado/borrar-empleado.component';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule.forChild([])
   ]
 })
 export class EmpleadoModule { }
