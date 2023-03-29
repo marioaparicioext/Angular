@@ -12,6 +12,7 @@ import { RolServicio } from './rol/servicios/rol.servicio';
 import { SharedModule } from './shared/shared.module';
 import { VacacionesModule } from './vacaciones/vacaciones.module';
 import { VacacionesServicio } from './vacaciones/servicios/vacaciones.servicio';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { VacacionesServicio } from './vacaciones/servicios/vacaciones.servicio';
     EmpleadoModule,
     SharedModule,
     RolModule, 
-    VacacionesModule
+    VacacionesModule,
+    LayoutModule
   ],
   providers: [EmpleadoServicio, RolServicio, VacacionesServicio],
   bootstrap: [AppComponent]

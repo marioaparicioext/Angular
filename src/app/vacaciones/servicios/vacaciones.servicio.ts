@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Empleado } from "src/app/modelos/empleado";
 import { Vacaciones } from "../../modelos/vacaciones";
 
 
@@ -31,6 +32,10 @@ export class VacacionesServicio {
 
     public obtenerVacacionesPorId(vacacionesId: number): Observable<Vacaciones>{
         return this.http.get<Vacaciones>(`${this.apiServeUrl}/vacaciones/${vacacionesId}`);
+    }
+
+    public obtenerVacacionesPorEmpleado(empleadoId: number): Observable<Vacaciones[]>{
+        return this.http.get<Vacaciones[]>(`${this.apiServeUrl}/vacaciones/listar/${empleadoId}`);
     }
 }
 

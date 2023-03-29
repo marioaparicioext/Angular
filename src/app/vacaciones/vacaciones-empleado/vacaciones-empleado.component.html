@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<h1>Lista de Vacaciones</h1>
+<div *ngIf="!listaVacaciones || listaVacaciones.length == 0 "></div>
+<table class="table table-striped" *ngIf="listaVacaciones && listaVacaciones.length > 0">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Empleado</th>
+            <th>Fecha_Peticion</th>
+            <th>Fecha_Inicio</th>
+            <th>Fecha_Fin</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vacaciones of listaVacaciones">
+            <td>{{vacaciones.id}}</td>
+            <td>{{vacaciones.empleado.email}}</td>
+            <td>{{vacaciones.fechaSolicitud}}</td>
+            <td>{{vacaciones.fechaInicio}}</td>
+            <td>{{vacaciones.fechaFin}}</td>
+            <td>{{vacaciones.estado}}</td>
+        </tr>
+    </tbody>
+    <div class = "col-md-3"></div>
+</table>
+
+</html>

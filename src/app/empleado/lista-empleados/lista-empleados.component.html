@@ -20,8 +20,9 @@
             <td>{{empleado.apellidos}}</td>
             <td>{{empleado.email}}</td>
             <td>{{empleado.rol.descripcion}}</td>
-            <td><button class="btn btn-danger" (click)="eliminarEmpleado(empleado.id)">Eliminar</button></td>
-            <td><button class="btn btn-success" [routerLink]="['/empleados/modificar/', empleado.id]">Editar</button></td>
+            <td><button class="buttonDelete" (click)="eliminarEmpleado(empleado.id)">Eliminar</button></td>
+            <td><button class="buttonVacation" [routerLink]="['/vacaciones/listar/', empleado.id]">Vacaciones</button></td>
+            <td><button class="buttonEdit" [routerLink]="['/empleados/modificar/', empleado.id]">Editar</button></td>
         </tr>
     </tbody>
     <div class = "col-md-3"></div>
