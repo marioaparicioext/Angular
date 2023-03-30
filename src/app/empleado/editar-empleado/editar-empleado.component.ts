@@ -41,6 +41,7 @@ export class EditarEmpleadoComponent implements OnInit {
     if (idRuta != null) {
       this.empleadoServicio.obtenerEmpleadoPorId(+idRuta).subscribe((response: Empleado) => {
         this.empleado = response;
+        this.desc = this.empleado.rol.descripcion;
         console.log(this.empleado)
       },
         (error: HttpErrorResponse) => {
