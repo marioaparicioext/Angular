@@ -62,13 +62,12 @@ export class EditarEmpleadoComponent implements OnInit {
     this.empleado.rol = rol
     this.empleadoServicio.modificarEmpleado(this.empleado).subscribe(
       () => {
-      //this.editarEmpleado();
+        this.router.navigate(['/empleados/listar'])
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     )
-    this.router.navigate(['/empleados/listar'])
     //this.empleadoServicio.obtenerEmpleados().subscribe()
   }
 
