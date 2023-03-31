@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Empleado } from 'src/app/modelos/empleado';
 import { Rol } from 'src/app/modelos/rol';
 import { RolServicio } from 'src/app/rol/servicios/rol.servicio';
@@ -15,7 +16,7 @@ export class AnadirEmpleadoComponent implements OnInit {
   empleado = new Empleado();
   desc: String
   roles: Rol[];
-  constructor(private empleadoServicio: EmpleadoServicio, private rolServicio: RolServicio) {
+  constructor(private empleadoServicio: EmpleadoServicio, private rolServicio: RolServicio, private router: Router) {
   }
   ngOnInit(): void {
     this.obtenerRoles()
@@ -41,8 +42,7 @@ export class AnadirEmpleadoComponent implements OnInit {
     const empleadoConRol = { ...this.empleado, rol: rol, contrasena: password }
     this.empleadoServicio.anadirEmpleado(empleadoConRol).subscribe(
       () => {
-        console.log("Empleado anadido")
-        console.log(empleadoConRol)
+        this.router.navigate(['/empleados/listar'])
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
