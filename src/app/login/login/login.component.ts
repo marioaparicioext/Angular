@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginServicio } from '../servicios/login.servicio';
+import { Credenciales } from 'src/app/modelos/credenciales';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,15 +10,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  user = '';
-  password = '';
+  credenciales: Credenciales = {
+    email: '',
+    password: ''
+  };
 
-  constructor(private router: Router){
+
+  constructor(private router: Router, private loginService: LoginServicio){
 
   }
 
-  public loginSubmit() {
-    this.router.navigate([`/empleados/listar`])
+  public loginSubmit(form: NgForm) {
+    console.log("FORM VALUE", form.value)
+    this.loginService.login(this.credenciales).subscribe(response => {
+      this.router.navigate([`/empleados/listar`])
+    })
   }
 
 }

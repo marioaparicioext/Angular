@@ -1,11 +1,14 @@
-<form>
+<div class="container py-5">
+
+<form class="mx-auto" style="max-width: 25rem;" #form="ngForm" (ngSubmit)="loginSubmit(form)">
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+      <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" [(ngModel)]="credenciales.email">
     </div>
     <div class="mb-5">
       <label for="password" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" id="password">
+      <input type="password" name="password" class="form-control" id="password" [(ngModel)]="credenciales.password">
     </div>
-    <button type="submit" class="btn btn-primary" (click)="loginSubmit()">Submit</button>
+    <button class="btn btn-lg btn-primary">Submit</button>
   </form>
+</div>

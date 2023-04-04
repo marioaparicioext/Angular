@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 //import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +13,9 @@ import { SharedModule } from './shared/shared.module';
 import { VacacionesModule } from './vacaciones/vacaciones.module';
 import { VacacionesServicio } from './vacaciones/servicios/vacaciones.servicio';
 import { LayoutModule } from './layout/layout.module';
+import { LoginServicio } from './login/servicios/login.servicio';
+import { LoginModule } from './login/login.module';
+import { AuthInterceptor } from './interceptores/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,13 @@ import { LayoutModule } from './layout/layout.module';
     SharedModule,
     RolModule, 
     VacacionesModule,
-    LayoutModule
+    LayoutModule, 
+    LoginModule
   ],
-  providers: [EmpleadoServicio, RolServicio, VacacionesServicio],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+  },
+    EmpleadoServicio, RolServicio, VacacionesServicio, LoginServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

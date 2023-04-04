@@ -9,7 +9,7 @@ import { ListaVacacionesComponent } from './vacaciones/lista-vacaciones/lista-va
 import { VacacionesEmpleadoComponent } from './vacaciones/vacaciones-empleado/vacaciones-empleado.component';
 
 const routes: Routes = [
-  {path: '',redirectTo:'/empleados/listar', pathMatch:'full'},
+  {path: '',redirectTo:'/login', pathMatch:'full'},
   {path:'empleados', component: ListaEmpleadosComponent},
   {path:'empleados/listar', component: ListaEmpleadosComponent},
   {path:'empleados/anadir', component: AnadirEmpleadoComponent},
