@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
 <h1>Pantalla principal</h1>
-
-
-<button *appRol="['ADMIN']" class="buttonCreate" [routerLink]="['/empleados/listar/']">Ver lista de empleados</button>
-<button *appRol="['JEFE', 'ADMIN']" class="buttonDelete" [routerLink]="['/vacaciones/listar']">Ver vacaciones</button>
-<button *appRol="['ADMIN']" class="buttonVacation" [routerLink]="['/roles/listar/']">Ver roles</button>
-<button *appRol="['ADMIN', 'JEFE', 'EMPLEADO']" class="buttonVacation" [routerLink]="['/vacaciones/listar/', empleadoId]" >Ver mis vacaciones</button>
-    
-   
-
+<button *appRol="['ADMIN']" class="buttonCreate" (click)="empleados()">Ver lista de empleados</button>
+<button *appRol="['JEFE', 'ADMIN']" class="buttonDelete" (click)="vacaciones()">Ver vacaciones</button>
+<button *appRol="['ADMIN']" class="buttonVacation" (click)="roles()">Ver roles</button>
 </html>

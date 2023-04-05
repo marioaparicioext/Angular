@@ -23,9 +23,8 @@ export class LoginComponent {
   public loginSubmit(form: NgForm) {
     console.log("FORM VALUE", form.value)
     this.loginService.login(this.credenciales).subscribe(response => {
-      
+      this.router.navigate([`/inicio`])
     })
-    this.router.navigate([`/inicio`])
   }
 
   

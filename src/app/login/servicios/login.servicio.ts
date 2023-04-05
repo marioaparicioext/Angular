@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class LoginServicio {
 
-    constructor(private http: HttpClient, private empleadoService: EmpleadoServicio){
+    constructor(private http: HttpClient, private empleadoService: EmpleadoServicio, private router: Router){
     }
     private apiServeUrl = 'http://localhost:8080';
 
@@ -48,12 +48,10 @@ export class LoginServicio {
 
     public logout(){
         localStorage.clear();
-       
+        this.router.navigate(["/login"]);
     }
 
     public getToken(){
-        console.log(localStorage.getItem('token'));
-        const token = localStorage.getItem('token');
-        return token;
+        return localStorage.getItem('token');
     }
 }

@@ -11,6 +11,7 @@ import { PantallaPrincipalComponent } from './login/pantalla-principal/pantalla-
 
 const routes: Routes = [
   {path: '',redirectTo:'/login', pathMatch:'full'},
+  {path: 'inicio', component: PantallaPrincipalComponent},
   {path:'empleados', component: ListaEmpleadosComponent},
   {path:'empleados/listar', component: ListaEmpleadosComponent},
   {path:'empleados/anadir', component: AnadirEmpleadoComponent},
@@ -18,8 +19,7 @@ const routes: Routes = [
   {path:'empleados/modificar/:id', component: EditarEmpleadoComponent},
   {path: 'vacaciones/listar', component: ListaVacacionesComponent},
   {path: 'vacaciones/listar/:id', component: VacacionesEmpleadoComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'inicio', component: PantallaPrincipalComponent}
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

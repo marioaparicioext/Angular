@@ -1,10 +1,10 @@
-import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Empleado } from '../modelos/empleado';
 import { EmpleadoServicio } from '../empleado/servicios/empleado.servicio';
 import { HttpClient } from '@angular/common/http';
 
 @Directive({
-  selector: "[appRol]",
+  selector: '[appRol]'
 })
 export class RolDirective implements OnInit {
 
@@ -22,37 +22,40 @@ export class RolDirective implements OnInit {
       if (id != null) {
         this.empleadoService.obtenerEmpleadoPorId(+id).subscribe((user: Empleado) => {
           this.currentUser = user;
-          
-          
+          this.updateView();
         });
       }
 
-
-    } else {
-      console.log('peinate pelon');
     }
-    this.updateView();
+
   }
   @Input('appRol')
   set appRol(val: Array<string>) {
     this.permissions = val;
     this.updateView();
   }
+
+
   private updateView(): void {
     this.viewContainer.clear();
     if (this.checkPermission()) {
       this.viewContainer.createEmbeddedView(this.templateRef);
     }
   }
+
+
   private checkPermission(): boolean {
     let tienePermiso = false;
     let hasPermission = false;
-    if (this.currentUser && this.currentUser.rol) {
+    console.log("PERMISOS "+this.permissions);
+    
+    if (this.currentUser && this.currentUser.rol.descripcion) {
+      console.log("YO TENGO ESTOS PERMISOS" + this.currentUser.rol.descripcion);
       for (const checkPermiso of this.permissions) {
         const rol = this.currentUser.rol.descripcion;
-        tienePermiso = rol.toUpperCase() == checkPermiso.toUpperCase();
-
+        tienePermiso = (rol.toUpperCase() == checkPermiso.toUpperCase());
         if (tienePermiso) {
+          console.log("TENGO PERMISO PARA VER EL BOTON CON PERMISOS: " + this.permissions);
           hasPermission = true;
           break;
         }

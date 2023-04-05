@@ -8,16 +8,17 @@ import { LoginServicio } from 'src/app/login/servicios/login.servicio';
   styleUrls: ['./top-menu.component.css']
 })
 export class TopMenuComponent implements OnInit{
-  ngOnInit(): void {
+  constructor(private loginService: LoginServicio){
     
   }
-
-  constructor(private loginService: LoginServicio){
+  ngOnInit(): void {
     
   }
 
   getLoginService(){
     return this.loginService;
   }
+
+  
  
 }
