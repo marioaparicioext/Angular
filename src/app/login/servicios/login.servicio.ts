@@ -20,10 +20,13 @@ export class LoginServicio {
         return this.http.post(this.apiServeUrl + "/login", credenciales, {
             observe: 'response'
         }).pipe(map((response: HttpResponse<any>) => {
+            
             const body = response.body;
             const headers = response.headers;
             const bearerToken = headers.get('Authorization')
-
+            console.log(body, "BODY")
+            console.log(headers, "HEADERS")
+            console.log(bearerToken, "BEARER")
             const token = bearerToken?.replace('Bearer ', '')
             if(token!=undefined){
                 localStorage.setItem('token',token);

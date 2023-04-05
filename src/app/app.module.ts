@@ -16,10 +16,12 @@ import { LayoutModule } from './layout/layout.module';
 import { LoginServicio } from './login/servicios/login.servicio';
 import { LoginModule } from './login/login.module';
 import { AuthInterceptor } from './interceptores/auth.interceptor';
+import { RolDirective } from './directivas/rol.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RolDirective
   ],
   imports: [
     BrowserModule,
