@@ -16,12 +16,11 @@ import { LayoutModule } from './layout/layout.module';
 import { LoginServicio } from './login/servicios/login.servicio';
 import { LoginModule } from './login/login.module';
 import { AuthInterceptor } from './interceptores/auth.interceptor';
-import { RolDirective } from './directivas/rol.directive';
+import { DirectivasModule } from './directivas/directivas.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RolDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +31,8 @@ import { RolDirective } from './directivas/rol.directive';
     RolModule, 
     VacacionesModule,
     LayoutModule, 
-    LoginModule
+    LoginModule,
+    DirectivasModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true

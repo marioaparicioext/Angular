@@ -1,10 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-pantalla-principal',
   templateUrl: './pantalla-principal.component.html',
   styleUrls: ['./pantalla-principal.component.css']
 })
-export class PantallaPrincipalComponent {
+export class PantallaPrincipalComponent implements OnInit {
+  empleadoId: number;
+  
+  constructor(private router: Router){
 
+  }
+  ngOnInit(): void {
+    
+    if(localStorage != null){
+      const id = localStorage.getItem("id");
+      if(id != null){
+        this.empleadoId = +id;
+      }
+      
+    }    
+  }
+  
+
+  
 }

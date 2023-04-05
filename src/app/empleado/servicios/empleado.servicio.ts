@@ -30,5 +30,9 @@ export class EmpleadoServicio {
     public obtenerEmpleadoPorId(empleadoId: number): Observable<Empleado>{
         return this.http.get<Empleado>(`${this.apiServeUrl}/empleados/${empleadoId}`);
     }
+    public obtenerEmpleadoPorUsername(empleadoEmail: string): Observable<Empleado>{
+        return this.http.get<Empleado>(`${this.apiServeUrl}/empleados/find/${empleadoEmail}`);
+    }
+
 
 }

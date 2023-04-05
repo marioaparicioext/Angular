@@ -7,6 +7,7 @@ import { BorrarEmpleadoComponent } from './borrar-empleado/borrar-empleado.compo
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { LayoutModule } from '../layout/layout.module';
+import { DirectivasModule } from '../directivas/directivas.module';
 
 
 
@@ -22,6 +23,7 @@ import { LayoutModule } from '../layout/layout.module';
     CommonModule,
     SharedModule,
     LayoutModule,
+    DirectivasModule,
     RouterModule.forChild([])
   ]
 })

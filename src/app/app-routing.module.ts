@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login/login.component';
 import { ListaRolesComponent } from './rol/lista-roles/lista-roles.component';
 import { ListaVacacionesComponent } from './vacaciones/lista-vacaciones/lista-vacaciones.component';
 import { VacacionesEmpleadoComponent } from './vacaciones/vacaciones-empleado/vacaciones-empleado.component';
+import { PantallaPrincipalComponent } from './login/pantalla-principal/pantalla-principal.component';
 
 const routes: Routes = [
   {path: '',redirectTo:'/login', pathMatch:'full'},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'empleados/modificar/:id', component: EditarEmpleadoComponent},
   {path: 'vacaciones/listar', component: ListaVacacionesComponent},
   {path: 'vacaciones/listar/:id', component: VacacionesEmpleadoComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'inicio', component: PantallaPrincipalComponent}
 ];
 
 @NgModule({

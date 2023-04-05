@@ -5,3 +5,85 @@
 @import '../node_modules/@fortawesome/fontawesome-free/css/brands.min.css';
 
 @import '../node_modules/@fortawesome/fontawesome-free/css/regular.min.css';
+
+.buttonEdit {
+    background-color: #4CAF50;
+    /* Green */
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.buttonEdit:hover {
+    background-color: white;
+    /* Green */
+    color: black;
+    border: 1px solid black;
+}
+
+
+.buttonCreate {
+    background-color: #0c8b11;
+    /* Green */
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.buttonCreate:hover {
+    background-color: white;
+    /* Green */
+    color: black;
+    border: 1px solid black;
+}
+
+
+.buttonVacation {
+    background-color: #5074cf;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.buttonVacation:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.buttonDelete {
+    background-color: #de1a1a;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.buttonDelete:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Empleado } from '../../modelos/empleado';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Credenciales } from 'src/app/modelos/credenciales';
+import { EmpleadoServicio } from 'src/app/empleado/servicios/empleado.servicio';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +12,7 @@ import { Credenciales } from 'src/app/modelos/credenciales';
 
 export class LoginServicio {
 
-    constructor(private http: HttpClient){
-
+    constructor(private http: HttpClient, private empleadoService: EmpleadoServicio){
     }
     private apiServeUrl = 'http://localhost:8080';
 
@@ -31,14 +32,28 @@ export class LoginServicio {
             if(token!=undefined){
                 localStorage.setItem('token',token);
             }
-            
+        this.empleadoService.obtenerEmpleadoPorUsername(credenciales.email).subscribe(
+            (response: Empleado) => {
+                localStorage.setItem('id', "" + response.id );
+              },
+              (error: HttpErrorResponse) => {
+                alert(error.message);
+              }
+        )
 
             return body;
 
         }))
     }
 
+    public logout(){
+        localStorage.clear();
+       
+    }
+
     public getToken(){
-        return localStorage.getItem('token');
+        console.log(localStorage.getItem('token'));
+        const token = localStorage.getItem('token');
+        return token;
     }
 }

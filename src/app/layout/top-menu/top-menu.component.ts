@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginServicio } from 'src/app/login/servicios/login.servicio';
 
 
 @Component({
@@ -11,8 +12,12 @@ export class TopMenuComponent implements OnInit{
     
   }
 
-  constructor(){
+  constructor(private loginService: LoginServicio){
     
+  }
+
+  getLoginService(){
+    return this.loginService;
   }
  
 }

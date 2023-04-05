@@ -5,6 +5,7 @@ import { PantallaPrincipalComponent } from './pantalla-principal/pantalla-princi
 import { SharedModule } from '../shared/shared.module';
 import { LayoutModule } from '../layout/layout.module';
 import { RouterModule } from '@angular/router';
+import { DirectivasModule } from '../directivas/directivas.module';
 
 
 
@@ -17,7 +18,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     LayoutModule,
+    DirectivasModule,
     RouterModule.forChild([])
   ]
 })
-export class LoginModule { }
+export class LoginModule { 
+}
