@@ -21,10 +21,13 @@ export class LoginComponent {
   }
 
   public loginSubmit(form: NgForm) {
-    console.log("FORM VALUE", form.value)
+    console.log("FORM VALUE", form.value);
     this.loginService.login(this.credenciales).subscribe(response => {
-      this.router.navigate([`/inicio`])
-    })
+      console.log(response);
+      console.log("PRUEBA");
+      this.router.navigate([`/inicio`]);
+    });
+
   }
 
   

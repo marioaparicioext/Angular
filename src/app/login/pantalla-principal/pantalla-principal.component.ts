@@ -9,15 +9,15 @@ import { Router } from '@angular/router';
 export class PantallaPrincipalComponent implements OnInit {
   empleadoId: number;
   constructor(private router: Router){
-
-  }
-  ngOnInit(): void {
     if(localStorage != null){
       const id = localStorage.getItem("id");
       if(id != null){
         this.empleadoId = +id;
       }
-    }    
+    }  
+  }
+  ngOnInit(): void {
+  
   }
 
   vacaciones(){

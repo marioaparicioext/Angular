@@ -15,10 +15,10 @@ export class RolDirective implements OnInit {
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef,
     private empleadoService: EmpleadoServicio
-  ) { }
-  ngOnInit(): void {
+  ) { 
     if (localStorage != null) {
       const id = localStorage.getItem('id');
+      console.log("SEGUNDO cargo el id "+ id);
       if (id != null) {
         this.empleadoService.obtenerEmpleadoPorId(+id).subscribe((user: Empleado) => {
           this.currentUser = user;
@@ -27,7 +27,9 @@ export class RolDirective implements OnInit {
       }
 
     }
-
+  }
+  ngOnInit(): void {
+    this.updateView();
   }
   @Input('appRol')
   set appRol(val: Array<string>) {

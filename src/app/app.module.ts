@@ -17,6 +17,7 @@ import { LoginServicio } from './login/servicios/login.servicio';
 import { LoginModule } from './login/login.module';
 import { AuthInterceptor } from './interceptores/auth.interceptor';
 import { DirectivasModule } from './directivas/directivas.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DirectivasModule } from './directivas/directivas.module';
     VacacionesModule,
     LayoutModule, 
     LoginModule,
-    DirectivasModule
+    DirectivasModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
