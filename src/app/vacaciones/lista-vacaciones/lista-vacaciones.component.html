@@ -14,13 +14,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let vacaciones of listaVacaciones">
+        <tr *ngFor="let vacaciones of listaVacaciones" [ngSwitch]="vacaciones.estado">
             <td>{{vacaciones.id}}</td>
             <td>{{vacaciones.empleado.email}}</td>
             <td>{{vacaciones.fechaSolicitud | conversorFecha:"dd/MM/yyyy"}}</td>
             <td>{{vacaciones.fechaInicio | conversorFecha:"dd/MM/yyyy"}}</td>
             <td>{{vacaciones.fechaFin | conversorFecha:"dd/MM/yyyy"}}</td>
-            <td>{{vacaciones.estado}}</td>
+            <!-- <td [ngStyle]="{{vacaciones.estado}}">{{vacaciones.estado}}</td> -->
+            <td>
+                <span *ngSwitchCase="'Pendiente'" class="pendiente">{{vacaciones.estado}}</span>
+                <span *ngSwitchCase="'Aceptada'" class="aceptada">{{vacaciones.estado}}</span>
+                <span *ngSwitchCase="'Denegada'" class="denegada">{{vacaciones.estado}}</span>
+            </td>
             <td><button class="buttonDelete" (click)="eliminarVacaciones(vacaciones.id)">Eliminar</button></td>
         </tr>
     </tbody>

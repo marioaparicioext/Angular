@@ -9,6 +9,7 @@ import { ListaVacacionesComponent } from './vacaciones/lista-vacaciones/lista-va
 import { VacacionesEmpleadoComponent } from './vacaciones/vacaciones-empleado/vacaciones-empleado.component';
 import { PantallaPrincipalComponent } from './login/pantalla-principal/pantalla-principal.component';
 import { AnadirVacacionesComponent } from './vacaciones/anadir-vacaciones/anadir-vacaciones.component';
+import { EditarPerfilComponent } from './empleado/editar-perfil/editar-perfil.component';
 
 const routes: Routes = [
   {path: '',redirectTo:'/login', pathMatch:'full'},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'vacaciones/listar', component: ListaVacacionesComponent},
   {path: 'vacaciones/anadir', component: AnadirVacacionesComponent},
   {path: 'vacaciones/listar/:id', component: VacacionesEmpleadoComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'perfil', component: EditarPerfilComponent}
 ];
 
 @NgModule({

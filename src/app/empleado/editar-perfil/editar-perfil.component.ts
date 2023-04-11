@@ -16,13 +16,12 @@ export class EditarPerfilComponent {
   empleado: Empleado
 
   constructor(private empleadoServicio: EmpleadoServicio,
-    private rolServicio: RolServicio,
     private route: ActivatedRoute,
     private router: Router) {
   }
   ngOnInit(): void {
-    this.idUser = +localStorage.getItem('id')!
-    this.cargarDatos(this.idUser)
+    this.idUser = +localStorage.getItem('id')!;
+    this.cargarDatos(this.idUser);
   }
 
   public cargarDatos(idUser: number): void {

@@ -88,15 +88,15 @@
     border: 1px solid black;
 }
 
-.aceptado {
-    background-color: green;
+.aceptada {
+    background-color: rgb(3, 245, 3);
     color: black;;
     padding: 5px;
     border-radius: 8px;
 }
 
-.denegado {
-    background-color: red;
+.denegada {
+    background-color: rgb(255, 0, 43);
     color: black;
     padding: 5px;
     border-radius: 8px;
