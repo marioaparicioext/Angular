@@ -1,5 +1,5 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 //import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,6 +18,11 @@ import { LoginModule } from './login/login.module';
 import { AuthInterceptor } from './interceptores/auth.interceptor';
 import { DirectivasModule } from './directivas/directivas.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConversorFechaPipe } from './pipes/conversor-fecha.pipe';
+import localeEs from '@angular/common/locales/es'
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEs)
 
 @NgModule({
   declarations: [
@@ -38,6 +43,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+  },
+  {
+    provide: LOCALE_ID, useValue:"es"
   },
     EmpleadoServicio, RolServicio, VacacionesServicio, LoginServicio],
   bootstrap: [AppComponent]

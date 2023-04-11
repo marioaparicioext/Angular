@@ -3,21 +3,24 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialsModule } from './materials/materials.module';
+import { DatePipe } from '@angular/common';
+import { ConversorFechaPipe } from '../pipes/conversor-fecha.pipe';
 
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ConversorFechaPipe],
   imports: [
     CommonModule,
     FormsModule,
     MaterialsModule,
-    RouterModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
     FormsModule,
+    ConversorFechaPipe,
     MaterialsModule,
     RouterModule
   ]

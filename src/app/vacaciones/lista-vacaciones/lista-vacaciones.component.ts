@@ -11,7 +11,8 @@ import { VacacionesServicio } from '../servicios/vacaciones.servicio';
 })
 export class ListaVacacionesComponent implements OnInit {
   listaVacaciones: Vacaciones[];
-  constructor(private vacacionesServicio: VacacionesServicio, private empleadoServicio: EmpleadoServicio){
+  constructor(private vacacionesServicio: VacacionesServicio, 
+    private empleadoServicio: EmpleadoServicio){
   }
 
   ngOnInit(): void {
@@ -23,6 +24,19 @@ export class ListaVacacionesComponent implements OnInit {
     this.vacacionesServicio.obtenerVacaciones().subscribe(
       (response: Vacaciones[]) => {
         this.listaVacaciones = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
+
+  public eliminarVacaciones(id: number): void{
+    this.vacacionesServicio.borrarVacaciones(id).subscribe(
+      () => {
+        //Duda
+        this.obtenerVacaciones();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

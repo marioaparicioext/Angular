@@ -87,5 +87,27 @@
     color: black;
     border: 1px solid black;
 }
+
+.aceptado {
+    background-color: green;
+    color: black;;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.denegado {
+    background-color: red;
+    color: black;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.pendiente {
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    border-radius: 8px;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

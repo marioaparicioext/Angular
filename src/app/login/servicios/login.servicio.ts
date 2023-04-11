@@ -20,6 +20,33 @@ export class LoginServicio {
         console.log("CREDENCIALES", credenciales);
         this.empleadoService.obtenerEmpleadoPorUsername(credenciales.email).subscribe(
             (response: Empleado) => {
+                localStorage.setItem('id', "" + response.id );
+              },
+              (error: HttpErrorResponse) => {
+                alert(error.message);
+              }
+        );
+        return this.http.post(this.apiServeUrl + "/login", credenciales, {
+            observe: 'response'
+        }).pipe(map((response: HttpResponse<any>) => {
+            const body = response.body;
+            const headers = response.headers;
+            const bearerToken = headers.get('Authorization');
+            const token = bearerToken?.replace('Bearer ', '');
+            if(token!=undefined){
+                localStorage.setItem('token',token);
+            }
+            return body;
+        }));
+    }
+
+
+
+
+    public loginBackup(credenciales: Credenciales){
+        console.log("CREDENCIALES", credenciales);
+        this.empleadoService.obtenerEmpleadoPorUsername(credenciales.email).subscribe(
+            (response: Empleado) => {
                 console.log("PRIMERO guardo el id "+ response.id);
                 localStorage.setItem('id', "" + response.id );
               },

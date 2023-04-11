@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { VacacionesEmpleadoComponent } from './vacaciones-empleado/vacaciones-empleado.component';
 import { AnadirVacacionesComponent } from './anadir-vacaciones/anadir-vacaciones.component';
+import { ConversorFechaPipe } from '../pipes/conversor-fecha.pipe';
 
 
 

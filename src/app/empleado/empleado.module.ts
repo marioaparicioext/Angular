@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { LayoutModule } from '../layout/layout.module';
 import { DirectivasModule } from '../directivas/directivas.module';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 
 
 
@@ -17,7 +18,8 @@ import { DirectivasModule } from '../directivas/directivas.module';
     ListaEmpleadosComponent,
     EditarEmpleadoComponent,
     AnadirEmpleadoComponent,
-    BorrarEmpleadoComponent
+    BorrarEmpleadoComponent,
+    EditarPerfilComponent
   ],
   imports: [
     CommonModule,
