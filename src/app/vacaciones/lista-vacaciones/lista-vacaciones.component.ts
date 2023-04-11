@@ -11,6 +11,8 @@ import { VacacionesServicio } from '../servicios/vacaciones.servicio';
 })
 export class ListaVacacionesComponent implements OnInit {
   listaVacaciones: Vacaciones[];
+  listaEstados = ["Aceptada", "Denegada","Pendiente"];
+  filtroSeleccionado="";
   constructor(private vacacionesServicio: VacacionesServicio, 
     private empleadoServicio: EmpleadoServicio){
   }
@@ -33,6 +35,19 @@ export class ListaVacacionesComponent implements OnInit {
 
 
   public eliminarVacaciones(id: number): void{
+    this.vacacionesServicio.borrarVacaciones(id).subscribe(
+      () => {
+        //Duda
+        this.obtenerVacaciones();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
+
+  public aprobarVacaciones(id: number):void{
     this.vacacionesServicio.borrarVacaciones(id).subscribe(
       () => {
         //Duda

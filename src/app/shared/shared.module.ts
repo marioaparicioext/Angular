@@ -5,12 +5,13 @@ import { RouterModule } from '@angular/router';
 import { MaterialsModule } from './materials/materials.module';
 import { DatePipe } from '@angular/common';
 import { ConversorFechaPipe } from '../pipes/conversor-fecha.pipe';
+import { EstadosFitroPipe } from '../pipes/estados-fitro.pipe';
 
 
 
 
 @NgModule({
-  declarations: [ConversorFechaPipe],
+  declarations: [ConversorFechaPipe, EstadosFitroPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,6 +22,7 @@ import { ConversorFechaPipe } from '../pipes/conversor-fecha.pipe';
     CommonModule,
     FormsModule,
     ConversorFechaPipe,
+    EstadosFitroPipe,
     MaterialsModule,
     RouterModule
   ]

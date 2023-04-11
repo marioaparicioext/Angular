@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConversorFechaPipe } from './pipes/conversor-fecha.pipe';
 import localeEs from '@angular/common/locales/es'
 import { registerLocaleData } from '@angular/common';
+import { EstadosFitroPipe } from './pipes/estados-fitro.pipe';
 
 registerLocaleData(localeEs)
 

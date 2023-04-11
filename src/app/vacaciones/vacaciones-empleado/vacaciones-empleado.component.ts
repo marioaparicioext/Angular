@@ -12,6 +12,8 @@ import { VacacionesServicio } from '../servicios/vacaciones.servicio';
 })
 export class VacacionesEmpleadoComponent implements OnInit {
   listaVacaciones: Vacaciones[];
+  listaEstados = ["Aceptada", "Denegada","Pendiente"];
+  filtroSeleccionado="";
 
   constructor(private vacacionesServicio: VacacionesServicio, private empleadoServicio: EmpleadoServicio,
      private route: ActivatedRoute) {

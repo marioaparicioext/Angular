@@ -10,17 +10,21 @@
             <th>Fecha_Peticion</th>
             <th>Fecha_Inicio</th>
             <th>Fecha_Fin</th>
-            <th>Estado</th>
+            <th>Estado
+                <select [(ngModel)]="filtroSeleccionado">
+                    <option value="">Todos</option>
+                    <option *ngFor="let estado of listaEstados" [value]="estado">{{estado}}</option>
+                </select>
+            </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let vacaciones of listaVacaciones" [ngSwitch]="vacaciones.estado">
+        <tr *ngFor="let vacaciones of listaVacaciones | estadosFitro:filtroSeleccionado" [ngSwitch]="vacaciones.estado">
             <td>{{vacaciones.id}}</td>
             <td>{{vacaciones.empleado.email}}</td>
             <td>{{vacaciones.fechaSolicitud | conversorFecha:"dd/MM/yyyy"}}</td>
             <td>{{vacaciones.fechaInicio | conversorFecha:"dd/MM/yyyy"}}</td>
             <td>{{vacaciones.fechaFin | conversorFecha:"dd/MM/yyyy"}}</td>
-            <!-- <td [ngStyle]="{{vacaciones.estado}}">{{vacaciones.estado}}</td> -->
             <td>
                 <span *ngSwitchCase="'Pendiente'" class="pendiente">{{vacaciones.estado}}</span>
                 <span *ngSwitchCase="'Aceptada'" class="aceptada">{{vacaciones.estado}}</span>
