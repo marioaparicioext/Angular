@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmpleadoServicio } from 'src/app/empleado/servicios/empleado.servicio';
 import { Vacaciones } from 'src/app/modelos/vacaciones';
 import { VacacionesServicio } from '../servicios/vacaciones.servicio';
+import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-lista-vacaciones',
@@ -11,6 +12,7 @@ import { VacacionesServicio } from '../servicios/vacaciones.servicio';
 })
 export class ListaVacacionesComponent implements OnInit {
   listaVacaciones: Vacaciones[];
+  vacaciones= new Vacaciones();
   listaEstados = ["Aceptada", "Denegada","Pendiente"];
   filtroSeleccionado="";
   constructor(private vacacionesServicio: VacacionesServicio, 
@@ -47,15 +49,32 @@ export class ListaVacacionesComponent implements OnInit {
   }
 
 
-  public aprobarVacaciones(id: number):void{
-    this.vacacionesServicio.borrarVacaciones(id).subscribe(
+  public denegarVacaciones(id: number):void{
+    let vac= new Vacaciones();
+    vac = this.listaVacaciones.find(vacaciones => vacaciones.id === id)!;
+    vac.estado = 'Denegada';
+    this.vacacionesServicio.modificarVacaciones(vac).subscribe(
       () => {
-        //Duda
-        this.obtenerVacaciones();
+
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
+      
+    )
+  }
+  public aprobarVacaciones(id: number):void{
+    let vac= new Vacaciones();
+    vac = this.listaVacaciones.find(vacaciones => vacaciones.id === id)!;
+    vac.estado = 'Aceptada';
+    this.vacacionesServicio.modificarVacaciones(vac).subscribe(
+      () => {
+
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      
     )
   }
 }

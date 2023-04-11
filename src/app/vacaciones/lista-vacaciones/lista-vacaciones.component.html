@@ -31,6 +31,8 @@
                 <span *ngSwitchCase="'Denegada'" class="denegada">{{vacaciones.estado}}</span>
             </td>
             <td><button class="buttonDelete" (click)="eliminarVacaciones(vacaciones.id)">Eliminar</button></td>
+            <td><button class="buttonDelete"  (click)="denegarVacaciones(vacaciones.id)"><i class="fa-solid fa-xmark"></i></button></td>
+            <td><button class="buttonCreate"  (click)="aprobarVacaciones(vacaciones.id)"><i class="fa-solid fa-check"></i></button></td>
         </tr>
     </tbody>
     <div class = "col-md-3"></div>
