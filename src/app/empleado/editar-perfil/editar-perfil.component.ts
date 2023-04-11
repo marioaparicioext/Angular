@@ -14,14 +14,14 @@ import { Empleado } from 'src/app/modelos/empleado';
 export class EditarPerfilComponent {
   idUser: number
   empleado: Empleado
-
   constructor(private empleadoServicio: EmpleadoServicio,
     private route: ActivatedRoute,
     private router: Router) {
+      this.idUser = +localStorage.getItem('id')!;
+      this.cargarDatos(this.idUser);
   }
   ngOnInit(): void {
-    this.idUser = +localStorage.getItem('id')!;
-    this.cargarDatos(this.idUser);
+
   }
 
   public cargarDatos(idUser: number): void {
