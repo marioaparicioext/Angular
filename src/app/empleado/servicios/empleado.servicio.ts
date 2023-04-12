@@ -34,5 +34,9 @@ export class EmpleadoServicio {
         return this.http.get<Empleado>(`${this.apiServeUrl}/empleados/find/${empleadoEmail}`);
     }
 
+    public editarPerfil(empleado: Empleado): Observable<Empleado> {
+        return this.http.put<Empleado>(`${this.apiServeUrl}/empleados/editarPerfil`, empleado);
+    }
+
 
 }

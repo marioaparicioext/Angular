@@ -23,7 +23,8 @@ const routes: Routes = [
   {path: 'vacaciones/anadir', component: AnadirVacacionesComponent},
   {path: 'vacaciones/listar/:id', component: VacacionesEmpleadoComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'perfil', component: EditarPerfilComponent}
+  {path: 'perfil', component: EditarPerfilComponent},
+  {path:'empleados/editarPerfil/:id', component: EditarPerfilComponent},
 ];
 
 @NgModule({

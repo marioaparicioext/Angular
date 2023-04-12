@@ -3,8 +3,9 @@ import { EmpleadoServicio } from '../servicios/empleado.servicio';
 import { RolServicio } from 'src/app/rol/servicios/rol.servicio';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rol } from 'src/app/modelos/rol';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Empleado } from 'src/app/modelos/empleado';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -14,11 +15,14 @@ import { Empleado } from 'src/app/modelos/empleado';
 export class EditarPerfilComponent {
   idUser: number
   empleado: Empleado
+  newPwd: string
+  private apiServeUrl = 'http://localhost:8080';
   constructor(private empleadoServicio: EmpleadoServicio,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router, private http: HttpClient) {
       this.idUser = +localStorage.getItem('id')!;
       this.cargarDatos(this.idUser);
+      this.newPwd = "";
   }
   ngOnInit(): void {
 
@@ -34,15 +38,33 @@ export class EditarPerfilComponent {
 
   }
   public editarEmpleado(): void {
-    this.empleadoServicio.modificarEmpleado(this.empleado).subscribe(
-      () => {
-        this.router.navigate(['/empleados/listar'])
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+    const idRuta = localStorage.getItem('id')!;
+    if(this.newPwd != ""){
+      console.log("entrando a editarPerfil");
+      this.empleado.contrasena = this.newPwd;
+      this.empleadoServicio.editarPerfil(this.empleado).subscribe(
+        () => {
+          this.router.navigate(['/login']);
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      )
+    }else{
+      console.log("entrando a modificarEmpleado");
+      this.empleadoServicio.modificarEmpleado(this.empleado).subscribe(
+        () => {
+          this.router.navigate(['/inicio']);
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      )
+    } 
+  
   }
+    
+   
 }
 
 
