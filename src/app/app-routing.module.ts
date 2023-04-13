@@ -11,21 +11,23 @@ import { PantallaPrincipalComponent } from './login/pantalla-principal/pantalla-
 import { AnadirVacacionesComponent } from './vacaciones/anadir-vacaciones/anadir-vacaciones.component';
 import { EditarPerfilComponent } from './empleado/editar-perfil/editar-perfil.component';
 import { AuthGuard } from './shared/auth.guard';
+import { EditarVacacionesComponent } from './vacaciones/editar-vacaciones/editar-vacaciones.component';
 
 const routes: Routes = [
   {path: '',redirectTo:'/login', pathMatch:'full'},
   {path: 'inicio', component: PantallaPrincipalComponent},
   {path:'empleados', component: ListaEmpleadosComponent},
-  {path:'empleados/listar', component: ListaEmpleadosComponent},
-  {path:'empleados/anadir', component: AnadirEmpleadoComponent, data:{role: 'ADMIN'}, canActivate: [AuthGuard]},
-  {path:'roles/listar', component: ListaRolesComponent},
-  {path:'empleados/modificar/:id', component: EditarEmpleadoComponent},
-  {path: 'vacaciones/listar', component: ListaVacacionesComponent},
+  {path:'empleados/listar', component: ListaEmpleadosComponent, data:{role: ['ADMIN']}, canActivate: [AuthGuard]},
+  {path:'empleados/anadir', component: AnadirEmpleadoComponent, data:{role: ['ADMIN'] }, canActivate: [AuthGuard]},
+  {path:'roles/listar', component: ListaRolesComponent, data: {role: ['ADMIN']}, canActivate: [AuthGuard]},
+  {path:'empleados/modificar/:id', component: EditarEmpleadoComponent, data: {role: ['ADMIN']}, canActivate: [AuthGuard]},
+  {path:'vacaciones/modificar/:id', component: EditarVacacionesComponent, data: {role: ['ADMIN', 'EMPLEADO']}, canActivate: [AuthGuard]},
+  {path: 'vacaciones/listar', component: ListaVacacionesComponent, data: {role: ['ADMIN','JEFE']}, canActivate: [AuthGuard]},
   {path: 'vacaciones/anadir', component: AnadirVacacionesComponent},
-  {path: 'vacaciones/listar/:id', component: VacacionesEmpleadoComponent},
+  {path: 'vacaciones/listar/:id', component: VacacionesEmpleadoComponent, data: {role: ['ADMIN','EMPLEADO']}, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'perfil', component: EditarPerfilComponent},
-  {path:'empleados/editarPerfil/:id', component: EditarPerfilComponent},
+  {path:'empleados/editarPerfil', component: EditarPerfilComponent},
 ];
 
 @NgModule({

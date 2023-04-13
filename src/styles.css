@@ -20,6 +20,18 @@
     border-radius: 8px;
 }
 
+
+.buttonEditIcon {
+    /* Green */
+    background-color: transparent;
+    border: 0px solid;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
 .buttonEdit:hover {
     background-color: white;
     /* Green */

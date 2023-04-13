@@ -43,13 +43,6 @@ export class AnadirVacacionesComponent {
 
       this.vacacionesServicio.anadirVacaciones(this.vacaciones).subscribe(
         (response1: Vacaciones) => {
-          console.log("LAS VACACIONES:" + response1);
-          console.log("LAS VACACIONES:" + response1.fechaSolicitud);
-          console.log("LAS VACACIONES:" + response1.fechaInicio);
-          console.log("LAS VACACIONES:" + response1.fechaFin);
-          console.log("LAS VACACIONES:" + response1.id);
-          console.log("LAS VACACIONES:" + response1.estado);
-          console.log("LAS VACACIONES:" + response1.empleado.id);
           this.router.navigate([`/vacaciones/listar/${this.empleadoId}`]);
         },
         (error: HttpErrorResponse) => {

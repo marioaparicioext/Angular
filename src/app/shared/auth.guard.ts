@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, switchMap} from 'rxjs';
+
 import { EmpleadoServicio } from '../empleado/servicios/empleado.servicio';
 import { Empleado } from '../modelos/empleado';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -10,37 +11,60 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class AuthGuard implements CanActivate {
   empleado = new Empleado();
-  
-  
-  constructor(private empleadoServicio: EmpleadoServicio, private router: Router, private http: HttpClient){
-    
+  roles: string;
+  constructor(private empleadoServicio: EmpleadoServicio, private router: Router, private http: HttpClient) {
+
   }
-  
 
-
-    usuarioActual(route: ActivatedRouteSnapshot): boolean {
-
-      const id = +localStorage.getItem("id")!;
-      const permitido = 
-      this.empleadoServicio.obtenerEmpleadoPorId(id).subscribe(
-        (response: Empleado) => {
-          this.empleado = response;
-          let roles: string;
-          roles = this.empleado.rol.descripcion;
-          return roles.includes(route.data['role']);
-        },
-          (error: HttpErrorResponse) => {
-            alert(error.message);
-          });
-        
-      } 
-    
-  
-  
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.usuarioActual(route);
+    const id = +localStorage.getItem("id")!;
+    const idRuta = route.paramMap.get('id');
+    console.log(idRuta);
+    return this.empleadoServicio.obtenerEmpleadoPorId(id).pipe(
+      switchMap((user) => {
+        let permitido = false;
+        let globalPerms = false;
+        this.roles = user.rol.descripcion;
+        return new Observable<boolean>((observer) => {
+          route.data['role'].forEach((element: string) => {
+            if(this.roles == element){
+              permitido=true;
+              if(this.roles == "ADMIN"){
+                globalPerms= true;
+                return;
+              }
+            }
+          });
+          if(globalPerms == true){
+            observer.next(true);
+          }
+          else{
+            console.log("DEBERÍA NO SER ADMIN");
+            if(permitido=true){
+              if(route.toString().includes('vacaciones/modificar')){
+                observer.next(true);
+              }
+              else if(idRuta == null || idRuta == undefined || idRuta == '0' || idRuta==localStorage.getItem("id")){
+                observer.next(true);
+              }
+              else{
+                this.router.navigate(['/inicio']);
+                observer.next(false);
+              }
+            }
+            else{
+              console.log("NO TENGO PERMISOS ME VOY A INICIO");
+              this.router.navigate(['/inicio']);
+              observer.next(false);
+            }
+          }
+          observer.complete();
+        });
+      },
+    ));
+
   }
-  
+
 }

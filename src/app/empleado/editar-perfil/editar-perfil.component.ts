@@ -45,6 +45,7 @@ export class EditarPerfilComponent {
       this.empleadoServicio.editarPerfil(this.empleado).subscribe(
         () => {
           this.router.navigate(['/login']);
+          localStorage.clear();
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
