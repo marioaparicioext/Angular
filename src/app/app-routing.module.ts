@@ -10,13 +10,14 @@ import { VacacionesEmpleadoComponent } from './vacaciones/vacaciones-empleado/va
 import { PantallaPrincipalComponent } from './login/pantalla-principal/pantalla-principal.component';
 import { AnadirVacacionesComponent } from './vacaciones/anadir-vacaciones/anadir-vacaciones.component';
 import { EditarPerfilComponent } from './empleado/editar-perfil/editar-perfil.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {path: '',redirectTo:'/login', pathMatch:'full'},
   {path: 'inicio', component: PantallaPrincipalComponent},
   {path:'empleados', component: ListaEmpleadosComponent},
   {path:'empleados/listar', component: ListaEmpleadosComponent},
-  {path:'empleados/anadir', component: AnadirEmpleadoComponent},
+  {path:'empleados/anadir', component: AnadirEmpleadoComponent, data:{role: 'ADMIN'}, canActivate: [AuthGuard]},
   {path:'roles/listar', component: ListaRolesComponent},
   {path:'empleados/modificar/:id', component: EditarEmpleadoComponent},
   {path: 'vacaciones/listar', component: ListaVacacionesComponent},
