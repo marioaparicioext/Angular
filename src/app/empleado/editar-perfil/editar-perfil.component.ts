@@ -20,12 +20,12 @@ export class EditarPerfilComponent {
   constructor(private empleadoServicio: EmpleadoServicio,
     private route: ActivatedRoute,
     private router: Router, private http: HttpClient) {
-      this.idUser = +localStorage.getItem('id')!;
-      this.cargarDatos(this.idUser);
-      this.newPwd = "";
+
   }
   ngOnInit(): void {
-
+    this.idUser = +localStorage.getItem('id')!;
+    this.cargarDatos(this.idUser);
+    this.newPwd = "";
   }
 
   public cargarDatos(idUser: number): void {

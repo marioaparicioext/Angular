@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { DirectivasModule } from '../directivas/directivas.module';
 
 
 @NgModule({
@@ -15,6 +17,8 @@ import { RouterModule } from '@angular/router';
 
   imports: [
     CommonModule,
+    SharedModule,
+    DirectivasModule,
     RouterModule.forChild([])
   ]
 })
