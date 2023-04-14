@@ -30,10 +30,16 @@
                 <span *ngSwitchCase="'Aceptada'" class="aceptada">{{vacaciones.estado}}</span>
                 <span *ngSwitchCase="'Denegada'" class="denegada">{{vacaciones.estado}}</span>
             </td>
-            <td><button class="buttonEditIcon" [routerLink]="['/vacaciones/modificar/', vacaciones.id]"><i class="fa-solid fa-pen-to-square"></i></button></td>
+            <td><button class="buttonEditIcon" [routerLink]="['/vacaciones/modificar/', vacaciones.id]"><i
+                        class="fa-solid fa-pen-to-square"></i></button></td>
         </tr>
     </tbody>
-    <div class = "col-md-3"></div>
+
+
+    <div class="col-md-3"></div>
 </table>
+<div class="container text-center">
+    <button class="buttonCreate" [routerLink]="['/vacaciones/anadir/']">Solicitar vacaciones</button>
+</div>
 
 </html>

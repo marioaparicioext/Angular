@@ -1,28 +1,25 @@
-<form #vacacionesFormulario="ngForm"> <!--(ngSubmit)="anadirEmpleado()"-->
-  <mat-form-field appearance="outline">
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate name="fechaInicio" placeholder="Start date" [(ngModel)]="vacaciones.fechaInicio">
-      <input matEndDate name="fechaFin" placeholder="End date" [(ngModel)]="vacaciones.fechaFin">
-    </mat-date-range-input>
-    <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
+<div class="container text-center">
+  <form #vacacionesFormulario="ngForm"> <!--(ngSubmit)="anadirEmpleado()"-->
+    <div class="form-group" style="margin-top: 10px">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate name="fechaInicio" placeholder="Start date" [(ngModel)]="vacaciones.fechaInicio">
+          <input matEndDate name="fechaFin" placeholder="End date" [(ngModel)]="vacaciones.fechaFin">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
 
-  
-  <button mat-raised-button type="submit" class="btn btn-success me-2" (click)="anadirVacaciones(vacacionesFormulario)"
-    [disabled]="!vacacionesFormulario.valid">Confirmar</button>
-  <button mat-raised-button type="submit" class="btn btn-danger" (click)="vacacionesFormulario.reset()">Reset</button>
-</form>
+    <div class="form-group" style="margin-top: 10px">
+      <button class="btn btn-success me-3" type="submit" 
+        (click)="anadirVacaciones(vacacionesFormulario)" [disabled]="!vacacionesFormulario.valid">Confirmar</button>
+      <button  type="submit" class="btn btn-danger"
+        (click)="vacacionesFormulario.reset()">Reset</button>
+    </div>
+  </form>
+</div>
 
 
-
-
-<!-- <div class="form-group text-center">
-            <mat-date-range-input [rangePicker]="picker">
-                <input id="fechaInicio" name="fechaInicio" matStartDate placeholder="Start date" [(ngModel)]="vacaciones.fechaInicio">
-                <input id="fechaFin" name="fechaFin" matEndDate placeholder="End date" [(ngModel)]="vacaciones.fechaFin">
-            </mat-date-range-input>
-            <mat-date-range-picker #picker></mat-date-range-picker>
-            <div class="text-center"> -->
