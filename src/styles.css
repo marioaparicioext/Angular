@@ -60,6 +60,11 @@
     border: 1px solid black;
 }
 
+.vacacionesCard {
+    cursor: pointer;
+    background-color: orange;
+}
+
 .buttonDeny {
     background-color: #d80a0d;
     /* Green */

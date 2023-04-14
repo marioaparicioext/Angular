@@ -31,4 +31,8 @@ export class PantallaPrincipalComponent implements OnInit {
   empleados(){
     this.router.navigate(['empleados/listar']);
   }
+  
+  verMisVacaciones(){
+    this.router.navigate([`vacaciones/listar/${+localStorage.getItem('id')!}`]);
+  }
 }

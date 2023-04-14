@@ -41,8 +41,7 @@ export class AuthGuard implements CanActivate {
             observer.next(true);
           }
           else{
-            console.log("DEBERÍA NO SER ADMIN");
-            if(permitido=true){
+            if(permitido==true){
               if(route.toString().includes('vacaciones/modificar')){
                 observer.next(true);
               }
