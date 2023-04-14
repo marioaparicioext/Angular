@@ -6,6 +6,13 @@
 
 @import '../node_modules/@fortawesome/fontawesome-free/css/regular.min.css';
 
+.div-center {
+    
+    margin: auto;
+   
+    
+}
+
 .buttonEdit {
     background-color: #4CAF50;
     /* Green */
@@ -85,6 +92,7 @@
     color: black;
     border: 1px solid black;
 }
+
 .buttonCreate {
     background-color: #0c8b11;
     /* Green */
@@ -147,7 +155,8 @@
 
 .aceptada {
     background-color: rgb(3, 245, 3);
-    color: black;;
+    color: black;
+    ;
     padding: 5px;
     border-radius: 8px;
 }
@@ -166,5 +175,12 @@
     border-radius: 8px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
