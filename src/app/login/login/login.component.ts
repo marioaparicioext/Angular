@@ -23,10 +23,14 @@ export class LoginComponent {
   public loginSubmit(form: NgForm) {
     console.log("FORM VALUE", form.value);
     this.loginService.login(this.credenciales).subscribe(response => {
-      console.log(response);
-      console.log("PRUEBA");
       this.router.navigate([`/inicio`]);
-    });
+      
+    },(error => {
+      alert("Credenciales no validas");
+
+    }));
+
+    
 
   }
 

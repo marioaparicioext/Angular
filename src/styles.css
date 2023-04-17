@@ -175,6 +175,12 @@
     border-radius: 8px;
 }
 
+table.center {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 html,
 body {
     height: 100%;

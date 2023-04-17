@@ -12,6 +12,7 @@ import { AnadirVacacionesComponent } from './vacaciones/anadir-vacaciones/anadir
 import { EditarPerfilComponent } from './empleado/editar-perfil/editar-perfil.component';
 import { AuthGuard } from './shared/auth.guard';
 import { EditarVacacionesComponent } from './vacaciones/editar-vacaciones/editar-vacaciones.component';
+import { Error404Component } from './errores/error404/error404.component';
 
 const routes: Routes = [
   {path: '',redirectTo:'/login', pathMatch:'full'},
@@ -28,6 +29,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'perfil', component: EditarPerfilComponent},
   {path:'empleados/editarPerfil', component: EditarPerfilComponent},
+  {path: '**', component: Error404Component},
+  
 ];
 
 @NgModule({

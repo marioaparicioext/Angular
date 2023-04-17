@@ -1,16 +1,20 @@
 <div class="container py-5">
 
-<form class="mx-auto" style="max-width: 25rem;" #form="ngForm" (ngSubmit)="loginSubmit(form)">
+  <form class="mx-auto" style="max-width: 25rem;" #form="ngForm" (ngSubmit)="loginSubmit(form)">
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" [(ngModel)]="credenciales.email">
+      <input type="email" name="email" class="form-control" placeholder="nombre.apellido@dominio.ext" id="email" aria-describedby="emailHelp"
+        [(ngModel)]="credenciales.email" pattern="[a-zA-Z0-9_]+([.][a-z0-9.-]+)*@[a-zA-Z0-9_]+([.][a-z0-9.-]+)*[.][a-zA-Z]{2,5}"  #email="ngModel" required>
     </div>
     <div class="mb-5">
       <label for="password" class="form-label">Contraseña</label>
-      <input type="password" name="password" class="form-control" id="password" [(ngModel)]="credenciales.password">
+      <input type="password" name="password" class="form-control" id="password" [(ngModel)]="credenciales.password" 
+      #password="ngModel" required>
     </div>
     <div class="container text-center">
-    <button class="btn btn-lg btn-primary">Acceder</button>
+      <button class="btn btn-lg btn-primary" [disabled]="!form.valid">Acceder</button>
     </div>
   </form>
 </div>
+
+

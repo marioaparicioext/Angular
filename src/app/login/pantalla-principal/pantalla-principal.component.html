@@ -3,11 +3,10 @@
 <!-- <button *appRol="['ADMIN']" class="buttonCreate" (click)="empleados()">Ver lista de empleados</button> -->
 <!-- <button *appRol="['JEFE', 'ADMIN']" class="buttonDelete" (click)="vacaciones()">Ver vacaciones</button> -->
 <div class="div-center"> 
-<div class="div-center" style="max-width: 30rem; margin-bottom: 10px;" >
-<mat-card *appRol="['EMPLEADO']" (click)="verMisVacaciones()" class="card" style="background-color: #e1e0e0; cursor: pointer; margin: 0 auto; ">
+<div class="div-center mt-2" style="max-width: 30rem; margin-bottom: 10px;" >
+  <mat-card *appRol="['EMPLEADO']" (click)="verMisVacaciones()" class="card" style="background-color: #e1e0e0; cursor: pointer; margin: 0 auto; ">
     <mat-card-header>
       <mat-card-title-group>
-        <!-- <i class="fa-solid fa-tree-palm"></i> -->
         <img mat-card-image src="./assets/imagenes/fotoPlaya.png"  width="200px" height="200px" alt="imagen no encontrada"/>
         <mat-card-title>Ver mis vacaciones</mat-card-title>
         <mat-card-subtitle>Accede aquí para ver tus vacaciones</mat-card-subtitle>
@@ -20,7 +19,7 @@
   <mat-card *appRol="['JEFE', 'ADMIN']"  (click)="vacaciones()" class="card" style="background-color: #e1e0e0; cursor: pointer; margin: 0 auto; ">
       <mat-card-header>
         <mat-card-title-group>
-          <!-- <i class="fa-solid fa-tree-palm"></i> -->
+
           <img mat-card-image src="./assets/imagenes/fotoPlaya.png"  width="200px" height="200px" alt="imagen no encontrada"/>
           <mat-card-title>Ver vacaciones</mat-card-title>
           <mat-card-subtitle>Accede aquí para ver las vacaciones de los empleados</mat-card-subtitle>
@@ -46,7 +45,6 @@
       <mat-card *appRol="['JEFE', 'ADMIN']"  (click)="roles()" class="card" style="background-color: #e1e0e0; cursor: pointer; margin: 0 auto; ">
           <mat-card-header>
             <mat-card-title-group>
-              <!-- <i class="fa-solid fa-tree-palm"></i> -->
               <img mat-card-image src="./assets/imagenes/habilidades.png" width="200px" height="200px" alt="imagen no encontrada"/>
               <mat-card-title>Ver roles</mat-card-title>
               <mat-card-subtitle>Accede aquí para ver los roles de los empleados de la empresa</mat-card-subtitle>
@@ -56,9 +54,4 @@
         </mat-card>
       </div>
     </div>
-<!-- <div *appRol="['EMPLEADO']" (click)="verMisVacaciones()">
-    
-</div> -->
-
-<!-- <button *appRol="['ADMIN']" class="buttonVacation" (click)="roles()">Ver roles</button> -->
 </html>
