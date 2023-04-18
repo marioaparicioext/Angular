@@ -11,6 +11,7 @@ export class Error404Component {
 
   }
 
+  //Dependiendo de que tengas la sesion activa el error 404 te redirige a un sitio u a otro
   public inicio(){
     if(localStorage.getItem("token") != null){
       this.router.navigate(['/inicio']);

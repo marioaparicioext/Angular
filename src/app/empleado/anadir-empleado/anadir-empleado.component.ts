@@ -21,6 +21,7 @@ export class AnadirEmpleadoComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerRoles()
   }
+  //Se obtiene los roles asignados
   public obtenerRoles(): void {
     this.rolServicio.obtenerRoles().subscribe((response: Rol[]) => {
       this.roles = response;
@@ -29,6 +30,7 @@ export class AnadirEmpleadoComponent implements OnInit {
         alert(error.message);
       });
   }
+  //se anade un empleado con una contrasena generada y ya encriptada
   public anadirEmpleado(): void {
     const role = this.roles.find(rol => rol.descripcion === this.desc)
     console.log(role)

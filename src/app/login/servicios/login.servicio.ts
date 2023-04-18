@@ -16,6 +16,7 @@ export class LoginServicio {
     }
     private apiServeUrl = 'http://localhost:8080';
 
+    //Metodo para logear al usuario mediante las credenciales introducidas por parametro de entrada
     public login(credenciales: Credenciales) {
         console.log("CREDENCIALES", credenciales);
         let empleado = new Empleado();
@@ -48,6 +49,7 @@ export class LoginServicio {
 
 
 
+    
     public loginBackup(credenciales: Credenciales) {
         console.log("CREDENCIALES", credenciales);
         this.empleadoService.obtenerEmpleadoPorUsername(credenciales.email).subscribe(
@@ -79,10 +81,12 @@ export class LoginServicio {
         }));
     }
 
+    //Sale de la sesion activa
     public logout() {
         localStorage.clear();
     }
 
+    //Getter para recibir el token del localStorage
     public getToken() {
         return localStorage.getItem('token');
     }

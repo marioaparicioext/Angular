@@ -15,6 +15,7 @@ export class ListaEmpleadosComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerEmpleados();
   }
+  //Se obtienen los empleados 
   public obtenerEmpleados(): void{
     this.empleadoServicio.obtenerEmpleados().subscribe(
       (response: Empleado[]) => {
@@ -26,10 +27,11 @@ export class ListaEmpleadosComponent implements OnInit {
     )
   }
 
+  //Se elimina el empleado dado su id
   public eliminarEmpleado(id: number): void{
     this.empleadoServicio.borrarEmpleado(id).subscribe(
       () => {
-        //Duda
+        
         this.obtenerEmpleados();
       },
       (error: HttpErrorResponse) => {

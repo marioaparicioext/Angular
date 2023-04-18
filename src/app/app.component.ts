@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
 
   constructor(private empleadoServicio: EmpleadoServicio){}
   ngOnInit(): void {
-    //this.obtenerEmpleados();
+    
   }
 
   

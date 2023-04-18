@@ -28,10 +28,7 @@ export class AnadirVacacionesComponent {
       }  
   }
 
-  // dateRange = new FormGroup({
-  //   start: new FormControl(),
-  //   end: new FormControl()
-  // });
+  
   public anadirVacacionesOrig(): void{
     console.log("ID EMPLEADO" + this.empleadoId);
     this.empleadoServicio.obtenerEmpleadoPorId(this.empleadoId).subscribe((response: Empleado) => {
@@ -56,6 +53,7 @@ export class AnadirVacacionesComponent {
   }
 
 
+  //Se anade las vacaciones solicitadas al usuario actual dado su id
   public anadirVacaciones(form: NgForm): void{
     const startDate = this.vacaciones.fechaInicio;
     const endDate = this.vacaciones.fechaFin;

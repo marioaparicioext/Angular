@@ -20,18 +20,22 @@ export class PantallaPrincipalComponent implements OnInit {
   
   }
 
+  //Navega a la lista de vacaciones
   vacaciones(){
     this.router.navigate(['vacaciones/listar']);
   }
 
+  //Navega a la lista de roles
   roles(){
     this.router.navigate(['roles/listar']);
   }
 
+  //Navega a la lista de empleados
   empleados(){
     this.router.navigate(['empleados/listar']);
   }
   
+  //Navega a la lista de las vacaciones del empleado actual
   verMisVacaciones(){
     this.router.navigate([`vacaciones/listar/${+localStorage.getItem('id')!}`]);
   }

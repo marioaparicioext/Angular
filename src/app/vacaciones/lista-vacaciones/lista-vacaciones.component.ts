@@ -24,6 +24,7 @@ export class ListaVacacionesComponent implements OnInit {
   }
 
   
+  //Se obtienen la lista de vacaciones 
   public obtenerVacaciones(): void{
     this.vacacionesServicio.obtenerVacaciones().subscribe(
       (response: Vacaciones[]) => {
@@ -36,6 +37,7 @@ export class ListaVacacionesComponent implements OnInit {
   }
 
 
+  //Se elimina las vacaciones dado el id de las mismas
   public eliminarVacaciones(id: number): void{
     this.vacacionesServicio.borrarVacaciones(id).subscribe(
       () => {
@@ -49,6 +51,7 @@ export class ListaVacacionesComponent implements OnInit {
   }
 
 
+  //Se deniegan las vacaciones del id dado
   public denegarVacaciones(id: number):void{
     let vac= new Vacaciones();
     vac = this.listaVacaciones.find(vacaciones => vacaciones.id === id)!;
@@ -63,6 +66,7 @@ export class ListaVacacionesComponent implements OnInit {
       
     )
   }
+  //Se aprueban las vacaciones del id dado
   public aprobarVacaciones(id: number):void{
     let vac= new Vacaciones();
     vac = this.listaVacaciones.find(vacaciones => vacaciones.id === id)!;

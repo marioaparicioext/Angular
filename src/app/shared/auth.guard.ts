@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate {
 
   }
 
+  //Se comprueba que permisos tiene el usuario actual para la navegacion de rutas dependiendo de los roles asignados
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

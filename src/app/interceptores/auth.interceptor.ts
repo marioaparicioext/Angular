@@ -13,6 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private loginService: LoginServicio) {}
 
+  //Se revisan las peticiones recibidas
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     const token = this.loginService.getToken();
@@ -20,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
       const cloned = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`)
       })
-      //console.log(cloned, "CLONADO")
+      
       return next.handle(cloned)
     }
     console.log(request, "REQ")

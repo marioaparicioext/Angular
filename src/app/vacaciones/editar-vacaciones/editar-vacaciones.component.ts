@@ -22,6 +22,7 @@ export class EditarVacacionesComponent implements OnInit {
   }
 
 
+  //Carga los datos de las vacaciones dado el id de las vacaciones
   public cargarDatos(): void {
     const idRuta = this.route.snapshot.paramMap.get('id');
     console.log(idRuta);
@@ -39,6 +40,7 @@ export class EditarVacacionesComponent implements OnInit {
 
 
 
+  //Se editan las vacaciones actuales
   public editarVacaciones(form: NgForm): void{
     this.vacacionesServicio.modificarVacaciones(this.vacaciones).subscribe(
       () => {
@@ -48,15 +50,5 @@ export class EditarVacacionesComponent implements OnInit {
   }
 
 
-  // public editarVacaciones(form: NgForm): void{
-  //   const idRuta = this.route.snapshot.paramMap.get('id');
-  //   this.vacacionesServicio.obtenerVacacionesPorId(+idRuta!).pipe(
-  //     concatMap((vacaciones) => {
-  //       this.vacaciones = vacaciones;
-  //       return this.vacacionesServicio.modificarVacaciones(this.vacaciones);
-  //     })
-  //   ).subscribe((vacaciones)=>{
-  //     this.router.navigate([`/vacaciones/listar/${localStorage.getItem("id")}`]);
-  //   });
-  // }
+  
 }

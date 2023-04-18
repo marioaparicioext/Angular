@@ -20,6 +20,7 @@ export class LoginComponent {
 
   }
 
+  //Se logea el usuario mediante las credenciales requeridas
   public loginSubmit(form: NgForm) {
     console.log("FORM VALUE", form.value);
     this.loginService.login(this.credenciales).subscribe(response => {

@@ -15,6 +15,7 @@ export class TopMenuComponent implements OnInit{
     
   }
 
+  //Getter del servicio de login
   getLoginService(){
     return this.loginService;
   }

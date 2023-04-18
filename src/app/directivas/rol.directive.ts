@@ -16,6 +16,7 @@ export class RolDirective implements OnInit {
     private viewContainer: ViewContainerRef,
     private empleadoService: EmpleadoServicio
   ) { 
+    
     if (localStorage != null) {
       const id = localStorage.getItem('id');
       console.log("SEGUNDO cargo el id "+ id);
@@ -38,6 +39,7 @@ export class RolDirective implements OnInit {
   }
 
 
+  //Se actualiza los roles del empleado con sesion activa
   private updateView(): void {
     this.viewContainer.clear();
     if (this.checkPermission()) {

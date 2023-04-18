@@ -28,6 +28,7 @@ export class EditarPerfilComponent {
     this.newPwd = "";
   }
 
+  //Se obtiene el empleado dado su id
   public cargarDatos(idUser: number): void {
     this.empleadoServicio.obtenerEmpleadoPorId(idUser).subscribe((response: Empleado) => {
       this.empleado = response;
@@ -37,8 +38,10 @@ export class EditarPerfilComponent {
       });
 
   }
+  //Se edita el perfil 
   public editarEmpleado(): void {
     const idRuta = localStorage.getItem('id')!;
+    //Se llama al metodo editarPerfil en el caso de que haya ya una contrasena
     if(this.newPwd != ""){
       console.log("entrando a editarPerfil");
       this.empleado.contrasena = this.newPwd;
@@ -51,6 +54,7 @@ export class EditarPerfilComponent {
           alert(error.message);
         }
       )
+      //e.o.c se llama a modificarEmpleado
     }else{
       console.log("entrando a modificarEmpleado");
       this.empleadoServicio.modificarEmpleado(this.empleado).subscribe(

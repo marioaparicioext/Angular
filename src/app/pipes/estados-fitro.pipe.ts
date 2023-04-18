@@ -5,6 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EstadosFitroPipe implements PipeTransform {
 
+  
   transform(values: any[], estadoFiltro: string): any[] {
     if(!estadoFiltro){
       return values;

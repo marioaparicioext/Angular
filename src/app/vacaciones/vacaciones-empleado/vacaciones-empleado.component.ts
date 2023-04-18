@@ -24,6 +24,7 @@ export class VacacionesEmpleadoComponent implements OnInit {
   }
 
 
+  //Se obtienen las vacaciones mediante el id del empleado
   public obtenerVacacionesId(): void {
     const idRuta = this.route.snapshot.paramMap.get('id');
     if (idRuta != null) {

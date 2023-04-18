@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 })
 export class ConversorFechaPipe implements PipeTransform {
 
+  //Pasa la zona horaria actual a la zona horaria espanola
   transform(value: Date | null | undefined, format: string): string {
     if(value){
       const datePipe = new DatePipe("es");

@@ -27,6 +27,7 @@ export class EditarEmpleadoComponent implements OnInit {
     this.cargarDatos()
   }
 
+  //Se obtienen los roles
   public obtenerRoles(): void {
     this.rolServicio.obtenerRoles().subscribe((response: Rol[]) => {
       this.roles = response;
@@ -36,6 +37,7 @@ export class EditarEmpleadoComponent implements OnInit {
       });
   }
 
+  //Se cargan los datos de un empleado dado su parametro id 
   public cargarDatos(): void {
     const idRuta = this.route.snapshot.paramMap.get('id');
     if (idRuta != null) {
@@ -52,6 +54,7 @@ export class EditarEmpleadoComponent implements OnInit {
     }
   }
 
+  //Se edita el empleado 
   public editarEmpleado(): void {
     const role = this.roles.find(rol => rol.descripcion === this.desc)
     const rol = new Rol()
@@ -68,7 +71,7 @@ export class EditarEmpleadoComponent implements OnInit {
         alert(error.message);
       }
     )
-    //this.empleadoServicio.obtenerEmpleados().subscribe()
+    
   }
 
 

@@ -15,6 +15,7 @@ export class ListaRolesComponent {
   ngOnInit(): void {
     this.obtenerRoles();
   }
+  //Se obtienen los roles asignados
   public obtenerRoles(): void{
     this.rolServicio.obtenerRoles().subscribe(
       (response: Rol[]) => {
