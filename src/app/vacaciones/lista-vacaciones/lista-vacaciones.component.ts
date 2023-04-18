@@ -1,9 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { EmpleadoServicio } from 'src/app/empleado/servicios/empleado.servicio';
 import { Vacaciones } from 'src/app/modelos/vacaciones';
 import { VacacionesServicio } from '../servicios/vacaciones.servicio';
-import { concatMap } from 'rxjs';
+
 
 @Component({
   selector: 'app-lista-vacaciones',
@@ -15,8 +14,7 @@ export class ListaVacacionesComponent implements OnInit {
   vacaciones= new Vacaciones();
   listaEstados = ["Aceptada", "Denegada","Pendiente"];
   filtroSeleccionado="";
-  constructor(private vacacionesServicio: VacacionesServicio, 
-    private empleadoServicio: EmpleadoServicio){
+  constructor(private vacacionesServicio: VacacionesServicio){
   }
 
   ngOnInit(): void {
@@ -41,7 +39,6 @@ export class ListaVacacionesComponent implements OnInit {
   public eliminarVacaciones(id: number): void{
     this.vacacionesServicio.borrarVacaciones(id).subscribe(
       () => {
-        //Duda
         this.obtenerVacaciones();
       },
       (error: HttpErrorResponse) => {

@@ -78,7 +78,4 @@ export class EditarEmpleadoComponent implements OnInit {
 }
 
 
-function obtenerEmpleadoPorid(id: number) {
-  throw new Error('Function not implemented.');
-}
 

@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { EmpleadoServicio } from '../servicios/empleado.servicio';
-import { RolServicio } from 'src/app/rol/servicios/rol.servicio';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Rol } from 'src/app/modelos/rol';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Empleado } from 'src/app/modelos/empleado';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-editar-perfil',

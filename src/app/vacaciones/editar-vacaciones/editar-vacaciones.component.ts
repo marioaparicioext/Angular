@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Vacaciones } from 'src/app/modelos/vacaciones';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-editar-vacaciones',
@@ -13,9 +12,9 @@ import { concatMap } from 'rxjs';
 })
 export class EditarVacacionesComponent implements OnInit {
   vacaciones = new Vacaciones();
-  constructor(private route: ActivatedRoute, private router: Router, private vacacionesServicio: VacacionesServicio){
+  constructor(private route: ActivatedRoute, private router: Router, private vacacionesServicio: VacacionesServicio) {
   }
-  
+
   ngOnInit(): void {
     this.cargarDatos();
 
@@ -38,10 +37,8 @@ export class EditarVacacionesComponent implements OnInit {
     }
   }
 
-
-
   //Se editan las vacaciones actuales
-  public editarVacaciones(form: NgForm): void{
+  public editarVacaciones(form: NgForm): void {
     this.vacacionesServicio.modificarVacaciones(this.vacaciones).subscribe(
       () => {
         this.router.navigate([`vacaciones/listar/${this.vacaciones.empleado.id}`]);
@@ -50,5 +47,5 @@ export class EditarVacacionesComponent implements OnInit {
   }
 
 
-  
+
 }

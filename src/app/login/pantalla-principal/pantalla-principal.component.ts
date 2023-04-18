@@ -9,12 +9,7 @@ import { Router } from '@angular/router';
 export class PantallaPrincipalComponent implements OnInit {
   empleadoId: number;
   constructor(private router: Router){
-    if(localStorage != null){
-      const id = localStorage.getItem("id");
-      if(id != null){
-        this.empleadoId = +id;
-      }
-    }  
+   this.empleadoId = +localStorage.getItem("id")!; 
   }
   ngOnInit(): void {
   
@@ -37,6 +32,6 @@ export class PantallaPrincipalComponent implements OnInit {
   
   //Navega a la lista de las vacaciones del empleado actual
   verMisVacaciones(){
-    this.router.navigate([`vacaciones/listar/${+localStorage.getItem('id')!}`]);
+    this.router.navigate([`vacaciones/listar/${this.empleadoId}`]);
   }
 }
