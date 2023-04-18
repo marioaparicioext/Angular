@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Empleado } from "src/app/modelos/empleado";
 import { Vacaciones } from "../../modelos/vacaciones";
 
 
@@ -35,12 +34,12 @@ export class VacacionesServicio {
     }
 
     //Se obtienen las vacaciones mediante el id de las vacacaiones dado
-    public obtenerVacacionesPorId(vacacionesId: number): Observable<Vacaciones>{
+    public obtenerVacacionesPorId(vacacionesId: number): Observable<Vacaciones> {
         return this.http.get<Vacaciones>(`${this.apiServeUrl}/vacaciones/${vacacionesId}`);
     }
 
     //Se obtienen las vacaciones mediante el id del empleado dado
-    public obtenerVacacionesPorEmpleado(empleadoId: number): Observable<Vacaciones[]>{
+    public obtenerVacacionesPorEmpleado(empleadoId: number): Observable<Vacaciones[]> {
         return this.http.get<Vacaciones[]>(`${this.apiServeUrl}/vacaciones/listar/${empleadoId}`);
     }
 }

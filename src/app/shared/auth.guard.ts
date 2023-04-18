@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable, switchMap} from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 import { EmpleadoServicio } from '../empleado/servicios/empleado.servicio';
 import { Empleado } from '../modelos/empleado';
@@ -30,31 +30,31 @@ export class AuthGuard implements CanActivate {
         this.roles = user.rol.descripcion;
         return new Observable<boolean>((observer) => {
           route.data['role'].forEach((element: string) => {
-            if(this.roles == element){
-              permitido=true;
-              if(this.roles == "ADMIN"){
-                globalPerms= true;
+            if (this.roles == element) {
+              permitido = true;
+              if (this.roles == "ADMIN") {
+                globalPerms = true;
                 return;
               }
             }
           });
-          if(globalPerms == true){
+          if (globalPerms == true) {
             observer.next(true);
           }
-          else{
-            if(permitido==true){
-              if(route.toString().includes('vacaciones/modificar')){
+          else {
+            if (permitido == true) {
+              if (route.toString().includes('vacaciones/modificar')) {
                 observer.next(true);
               }
-              else if(idRuta == null || idRuta == undefined || idRuta == '0' || idRuta==localStorage.getItem("id")){
+              else if (idRuta == null || idRuta == undefined || idRuta == '0' || idRuta == localStorage.getItem("id")) {
                 observer.next(true);
               }
-              else{
+              else {
                 this.router.navigate(['/inicio']);
                 observer.next(false);
               }
             }
-            else{
+            else {
               console.log("NO TENGO PERMISOS ME VOY A INICIO");
               this.router.navigate(['/inicio']);
               observer.next(false);
@@ -63,7 +63,7 @@ export class AuthGuard implements CanActivate {
           observer.complete();
         });
       },
-    ));
+      ));
 
   }
 

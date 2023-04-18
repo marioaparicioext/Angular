@@ -49,7 +49,7 @@ export class LoginServicio {
 
 
 
-    
+
     public loginBackup(credenciales: Credenciales) {
         console.log("CREDENCIALES", credenciales);
         this.empleadoService.obtenerEmpleadoPorUsername(credenciales.email).subscribe(

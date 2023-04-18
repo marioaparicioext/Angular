@@ -1,6 +1,6 @@
 import { Empleado } from "./empleado";
 
-export class Vacaciones{
+export class Vacaciones {
     id: number;
     empleado: Empleado;
     fechaSolicitud: Date;

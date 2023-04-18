@@ -17,8 +17,8 @@ export class EditarEmpleadoComponent implements OnInit {
   id: number;
   desc: String
   roles: Rol[];
-  constructor(private empleadoServicio: EmpleadoServicio, 
-    private rolServicio: RolServicio, 
+  constructor(private empleadoServicio: EmpleadoServicio,
+    private rolServicio: RolServicio,
     private route: ActivatedRoute,
     private router: Router) {
   }
@@ -71,7 +71,7 @@ export class EditarEmpleadoComponent implements OnInit {
         alert(error.message);
       }
     )
-    
+
   }
 
 

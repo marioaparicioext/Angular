@@ -22,5 +22,5 @@ import { DirectivasModule } from '../directivas/directivas.module';
     RouterModule.forChild([])
   ]
 })
-export class LoginModule { 
+export class LoginModule {
 }

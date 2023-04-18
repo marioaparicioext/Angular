@@ -8,7 +8,6 @@ import { AnadirVacacionesComponent } from './anadir-vacaciones/anadir-vacaciones
 import { EditarVacacionesComponent } from './editar-vacaciones/editar-vacaciones.component';
 
 
-
 @NgModule({
   declarations: [
     ListaVacacionesComponent,

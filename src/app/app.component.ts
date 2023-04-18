@@ -8,15 +8,15 @@ import { EmpleadoServicio } from './empleado/servicios/empleado.servicio';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   public empleados: Empleado[];
 
-  constructor(private empleadoServicio: EmpleadoServicio){}
+  constructor(private empleadoServicio: EmpleadoServicio) { }
   ngOnInit(): void {
-    
+
   }
 
-  
 
-  
+
+
 }

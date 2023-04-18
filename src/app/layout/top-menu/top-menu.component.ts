@@ -7,19 +7,19 @@ import { LoginServicio } from 'src/app/login/servicios/login.servicio';
   templateUrl: './top-menu.component.html',
   styleUrls: ['./top-menu.component.css']
 })
-export class TopMenuComponent implements OnInit{
-  constructor(private loginService: LoginServicio){
-    
+export class TopMenuComponent implements OnInit {
+  constructor(private loginService: LoginServicio) {
+
   }
   ngOnInit(): void {
-    
+
   }
 
   //Getter del servicio de login
-  getLoginService(){
+  getLoginService() {
     return this.loginService;
   }
 
-  
- 
+
+
 }

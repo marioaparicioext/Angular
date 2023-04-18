@@ -32,12 +32,12 @@ export class EmpleadoServicio {
     }
 
     //Se obtiene el empleado mediante su id
-    public obtenerEmpleadoPorId(empleadoId: number): Observable<Empleado>{
+    public obtenerEmpleadoPorId(empleadoId: number): Observable<Empleado> {
         return this.http.get<Empleado>(`${this.apiServeUrl}/empleados/${empleadoId}`);
     }
-    
+
     //Se obtiene el empleado dado su email
-    public obtenerEmpleadoPorUsername(empleadoEmail: string): Observable<Empleado>{
+    public obtenerEmpleadoPorUsername(empleadoEmail: string): Observable<Empleado> {
         return this.http.get<Empleado>(`${this.apiServeUrl}/empleados/find/${empleadoEmail}`);
     }
 

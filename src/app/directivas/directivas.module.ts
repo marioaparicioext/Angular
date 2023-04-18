@@ -12,7 +12,7 @@ import { RolDirective } from './rol.directive';
   imports: [
     CommonModule
   ],
-  exports:[
+  exports: [
     RolDirective
   ]
 })

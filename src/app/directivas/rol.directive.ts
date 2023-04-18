@@ -1,7 +1,6 @@
-import { Directive, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Empleado } from '../modelos/empleado';
 import { EmpleadoServicio } from '../empleado/servicios/empleado.servicio';
-import { HttpClient } from '@angular/common/http';
 
 @Directive({
   selector: '[appRol]'
@@ -15,11 +14,11 @@ export class RolDirective implements OnInit {
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef,
     private empleadoService: EmpleadoServicio
-  ) { 
-    
+  ) {
+
     if (localStorage != null) {
       const id = localStorage.getItem('id');
-      console.log("SEGUNDO cargo el id "+ id);
+      console.log("SEGUNDO cargo el id " + id);
       if (id != null) {
         this.empleadoService.obtenerEmpleadoPorId(+id).subscribe((user: Empleado) => {
           this.currentUser = user;
@@ -51,8 +50,8 @@ export class RolDirective implements OnInit {
   private checkPermission(): boolean {
     let tienePermiso = false;
     let hasPermission = false;
-    console.log("PERMISOS "+this.permissions);
-    
+    console.log("PERMISOS " + this.permissions);
+
     if (this.currentUser && this.currentUser.rol.descripcion) {
       console.log("YO TENGO ESTOS PERMISOS" + this.currentUser.rol.descripcion);
       for (const checkPermiso of this.permissions) {

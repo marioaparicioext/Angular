@@ -11,19 +11,19 @@ import { VacacionesServicio } from '../servicios/vacaciones.servicio';
 })
 export class ListaVacacionesComponent implements OnInit {
   listaVacaciones: Vacaciones[];
-  vacaciones= new Vacaciones();
-  listaEstados = ["Aceptada", "Denegada","Pendiente"];
-  filtroSeleccionado="";
-  constructor(private vacacionesServicio: VacacionesServicio){
+  vacaciones = new Vacaciones();
+  listaEstados = ["Aceptada", "Denegada", "Pendiente"];
+  filtroSeleccionado = "";
+  constructor(private vacacionesServicio: VacacionesServicio) {
   }
 
   ngOnInit(): void {
     this.obtenerVacaciones()
   }
 
-  
+
   //Se obtienen la lista de vacaciones 
-  public obtenerVacaciones(): void{
+  public obtenerVacaciones(): void {
     this.vacacionesServicio.obtenerVacaciones().subscribe(
       (response: Vacaciones[]) => {
         this.listaVacaciones = response;
@@ -36,7 +36,7 @@ export class ListaVacacionesComponent implements OnInit {
 
 
   //Se elimina las vacaciones dado el id de las mismas
-  public eliminarVacaciones(id: number): void{
+  public eliminarVacaciones(id: number): void {
     this.vacacionesServicio.borrarVacaciones(id).subscribe(
       () => {
         this.obtenerVacaciones();
@@ -49,8 +49,8 @@ export class ListaVacacionesComponent implements OnInit {
 
 
   //Se deniegan las vacaciones del id dado
-  public denegarVacaciones(id: number):void{
-    let vac= new Vacaciones();
+  public denegarVacaciones(id: number): void {
+    let vac = new Vacaciones();
     vac = this.listaVacaciones.find(vacaciones => vacaciones.id === id)!;
     vac.estado = 'Denegada';
     this.vacacionesServicio.modificarVacaciones(vac).subscribe(
@@ -60,12 +60,12 @@ export class ListaVacacionesComponent implements OnInit {
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
-      
+
     )
   }
   //Se aprueban las vacaciones del id dado
-  public aprobarVacaciones(id: number):void{
-    let vac= new Vacaciones();
+  public aprobarVacaciones(id: number): void {
+    let vac = new Vacaciones();
     vac = this.listaVacaciones.find(vacaciones => vacaciones.id === id)!;
     vac.estado = 'Aceptada';
     this.vacacionesServicio.modificarVacaciones(vac).subscribe(
@@ -75,7 +75,7 @@ export class ListaVacacionesComponent implements OnInit {
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
-      
+
     )
   }
 }

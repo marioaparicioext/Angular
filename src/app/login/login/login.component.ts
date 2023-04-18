@@ -16,7 +16,7 @@ export class LoginComponent {
   };
 
 
-  constructor(private router: Router, private loginService: LoginServicio){
+  constructor(private router: Router, private loginService: LoginServicio) {
 
   }
 
@@ -25,16 +25,16 @@ export class LoginComponent {
     console.log("FORM VALUE", form.value);
     this.loginService.login(this.credenciales).subscribe(response => {
       this.router.navigate([`/inicio`]);
-      
-    },(error => {
+
+    }, (error => {
       alert("Credenciales no validas");
 
     }));
 
-    
+
 
   }
 
-  
+
 
 }

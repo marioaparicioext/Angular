@@ -6,10 +6,6 @@ import { MaterialsModule } from './materials/materials.module';
 import { ConversorFechaPipe } from '../pipes/conversor-fecha.pipe';
 import { EstadosFitroPipe } from '../pipes/estados-fitro.pipe';
 
-
-
-
-
 @NgModule({
   declarations: [ConversorFechaPipe, EstadosFitroPipe],
   imports: [

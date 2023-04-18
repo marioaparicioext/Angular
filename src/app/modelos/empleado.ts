@@ -1,6 +1,6 @@
 import { Rol } from "./rol";
 
-export class Empleado{
+export class Empleado {
     id: number;
     nombre: string;
     apellidos: string;

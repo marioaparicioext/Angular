@@ -39,7 +39,7 @@ export class EditarPerfilComponent {
   public editarEmpleado(): void {
     const idRuta = localStorage.getItem('id')!;
     //Se llama al metodo editarPerfil en el caso de que haya ya una contrasena
-    if(this.newPwd != ""){
+    if (this.newPwd != "") {
       console.log("entrando a editarPerfil");
       this.empleado.contrasena = this.newPwd;
       this.empleadoServicio.editarPerfil(this.empleado).subscribe(
@@ -52,7 +52,7 @@ export class EditarPerfilComponent {
         }
       )
       //e.o.c se llama a modificarEmpleado
-    }else{
+    } else {
       console.log("entrando a modificarEmpleado");
       this.empleadoServicio.modificarEmpleado(this.empleado).subscribe(
         () => {
@@ -62,11 +62,11 @@ export class EditarPerfilComponent {
           alert(error.message);
         }
       )
-    } 
-  
+    }
+
   }
-    
-   
+
+
 }
 
 

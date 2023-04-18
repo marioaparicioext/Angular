@@ -1,4 +1,4 @@
-export class Rol{
+export class Rol {
     id: number;
     descripcion: string;
 }

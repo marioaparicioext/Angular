@@ -10,13 +10,13 @@ import { RolServicio } from '../servicios/rol.servicio';
 })
 export class ListaRolesComponent {
   roles: Rol[];
-  constructor(private rolServicio: RolServicio){
+  constructor(private rolServicio: RolServicio) {
   }
   ngOnInit(): void {
     this.obtenerRoles();
   }
   //Se obtienen los roles asignados
-  public obtenerRoles(): void{
+  public obtenerRoles(): void {
     this.rolServicio.obtenerRoles().subscribe(
       (response: Rol[]) => {
         this.roles = response;

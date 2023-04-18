@@ -15,22 +15,22 @@ import { EditarVacacionesComponent } from './vacaciones/editar-vacaciones/editar
 import { Error404Component } from './errores/error404/error404.component';
 
 const routes: Routes = [
-  {path: '',redirectTo:'/login', pathMatch:'full'},
-  {path: 'inicio', component: PantallaPrincipalComponent},
-  {path:'empleados', component: ListaEmpleadosComponent},
-  {path:'empleados/listar', component: ListaEmpleadosComponent, data:{role: ['ADMIN']}, canActivate: [AuthGuard]},
-  {path:'empleados/anadir', component: AnadirEmpleadoComponent, data:{role: ['ADMIN'] }, canActivate: [AuthGuard]},
-  {path:'roles/listar', component: ListaRolesComponent, data: {role: ['ADMIN']}, canActivate: [AuthGuard]},
-  {path:'empleados/modificar/:id', component: EditarEmpleadoComponent, data: {role: ['ADMIN']}, canActivate: [AuthGuard]},
-  {path:'vacaciones/modificar/:id', component: EditarVacacionesComponent, data: {role: ['ADMIN', 'EMPLEADO']}, canActivate: [AuthGuard]},
-  {path: 'vacaciones/listar', component: ListaVacacionesComponent, data: {role: ['ADMIN','JEFE']}, canActivate: [AuthGuard]},
-  {path: 'vacaciones/anadir', component: AnadirVacacionesComponent},
-  {path: 'vacaciones/listar/:id', component: VacacionesEmpleadoComponent, data: {role: ['ADMIN','EMPLEADO']}, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'perfil', component: EditarPerfilComponent},
-  {path:'empleados/editarPerfil', component: EditarPerfilComponent},
-  {path: '**', component: Error404Component},
-  
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'inicio', component: PantallaPrincipalComponent },
+  { path: 'empleados', component: ListaEmpleadosComponent },
+  { path: 'empleados/listar', component: ListaEmpleadosComponent, data: { role: ['ADMIN'] }, canActivate: [AuthGuard] },
+  { path: 'empleados/anadir', component: AnadirEmpleadoComponent, data: { role: ['ADMIN'] }, canActivate: [AuthGuard] },
+  { path: 'roles/listar', component: ListaRolesComponent, data: { role: ['ADMIN'] }, canActivate: [AuthGuard] },
+  { path: 'empleados/modificar/:id', component: EditarEmpleadoComponent, data: { role: ['ADMIN'] }, canActivate: [AuthGuard] },
+  { path: 'vacaciones/modificar/:id', component: EditarVacacionesComponent, data: { role: ['ADMIN', 'EMPLEADO'] }, canActivate: [AuthGuard] },
+  { path: 'vacaciones/listar', component: ListaVacacionesComponent, data: { role: ['ADMIN', 'JEFE'] }, canActivate: [AuthGuard] },
+  { path: 'vacaciones/anadir', component: AnadirVacacionesComponent },
+  { path: 'vacaciones/listar/:id', component: VacacionesEmpleadoComponent, data: { role: ['ADMIN', 'EMPLEADO'] }, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'perfil', component: EditarPerfilComponent },
+  { path: 'empleados/editarPerfil', component: EditarPerfilComponent },
+  { path: '**', component: Error404Component },
+
 ];
 
 @NgModule({

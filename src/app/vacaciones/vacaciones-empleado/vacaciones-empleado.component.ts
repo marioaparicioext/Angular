@@ -12,11 +12,11 @@ import { VacacionesServicio } from '../servicios/vacaciones.servicio';
 })
 export class VacacionesEmpleadoComponent implements OnInit {
   listaVacaciones: Vacaciones[];
-  listaEstados = ["Aceptada", "Denegada","Pendiente"];
-  filtroSeleccionado="";
+  listaEstados = ["Aceptada", "Denegada", "Pendiente"];
+  filtroSeleccionado = "";
 
   constructor(private vacacionesServicio: VacacionesServicio, private empleadoServicio: EmpleadoServicio,
-     private route: ActivatedRoute) {
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class VacacionesEmpleadoComponent implements OnInit {
         }
       )
     } else {
-        alert("idRuta es nulo")
+      alert("idRuta es nulo")
     }
   }
 }
