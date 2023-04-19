@@ -11,7 +11,7 @@ import { VacacionesServicio } from '../servicios/vacaciones.servicio';
 })
 export class ListaVacacionesComponent implements OnInit {
   listaVacaciones: Vacaciones[];
-  vacaciones = new Vacaciones();
+  vacaciones: Vacaciones;
   listaEstados = ["Aceptada", "Denegada", "Pendiente"];
   filtroSeleccionado = "";
   constructor(private vacacionesServicio: VacacionesServicio) {
@@ -32,6 +32,10 @@ export class ListaVacacionesComponent implements OnInit {
         alert(error.message);
       }
     )
+  }
+
+  public onDeleteVacaciones(vacaciones: Vacaciones){
+    this.vacaciones=vacaciones;
   }
 
 

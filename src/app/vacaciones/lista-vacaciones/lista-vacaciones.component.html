@@ -30,7 +30,7 @@
                 <span *ngSwitchCase="'Aceptada'" class="aceptada">{{vacaciones.estado}}</span>
                 <span *ngSwitchCase="'Denegada'" class="denegada">{{vacaciones.estado}}</span>
             </td>
-            <td><button class="buttonDelete" (click)="eliminarVacaciones(vacaciones.id)">Eliminar</button></td>
+            <td><button type="button" class="buttonDelete" (click)="onDeleteVacaciones(vacaciones)" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</button></td>
             <td><button class="buttonDeny"  (click)="denegarVacaciones(vacaciones.id)"><i class="fa-solid fa-xmark"></i></button></td>
             <td><button class="buttonAprove"  (click)="aprobarVacaciones(vacaciones.id)"><i class="fa-solid fa-check"></i></button></td>
         </tr>
@@ -39,3 +39,21 @@
 </table>
 
 </html>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel"><b>Borrar Vacaciones</b></h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro de que desea borrar esta solicitud de la lista de vacaciones?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="buttonDelete" (click)="eliminarVacaciones(vacaciones.id)" data-bs-dismiss="modal">Confirmar</button>
+        </div>
+      </div>
+    </div>
+</div>
