@@ -3,11 +3,11 @@
     <div class="form-group" style="margin-top: 10px">
       <mat-form-field appearance="outline">
         <mat-label>Enter a date range</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate name="fechaInicio" placeholder="Start date" [(ngModel)]="vacaciones.fechaInicio">
+        <mat-date-range-input [dateFilter]="weekendsDatesFilter" [min]="hoy" [max]="limite" [rangePicker]="picker">
+          <input matStartDate  (dateInput)="marcarLimite(vacaciones.fechaInicio)" (dateChange)="marcarLimite(vacaciones.fechaInicio)" name="fechaInicio" placeholder="Start date" [(ngModel)]="vacaciones.fechaInicio">
           <input matEndDate name="fechaFin" placeholder="End date" [(ngModel)]="vacaciones.fechaFin">
         </mat-date-range-input>
-        <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+        <mat-hint>DD/MM/YYYY - DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
@@ -17,7 +17,7 @@
       <button class="btn btn-success me-3" type="submit" 
         (click)="anadirVacaciones(vacacionesFormulario)" [disabled]="!vacacionesFormulario.valid">Confirmar</button>
       <button  type="submit" class="btn btn-danger"
-        (click)="vacacionesFormulario.reset()">Reset</button>
+      (click)="resetLimit(vacaciones.fechaInicio)" (click)="vacacionesFormulario.reset()" >Reset</button>
     </div>
   </form>
 </div>
