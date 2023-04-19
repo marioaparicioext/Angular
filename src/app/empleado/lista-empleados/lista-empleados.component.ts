@@ -10,6 +10,7 @@ import { EmpleadoServicio } from '../servicios/empleado.servicio';
 })
 export class ListaEmpleadosComponent implements OnInit {
   empleados: Empleado[];
+  public empleado: Empleado;
   constructor(private empleadoServicio: EmpleadoServicio) {
   }
   ngOnInit(): void {
@@ -27,13 +28,14 @@ export class ListaEmpleadosComponent implements OnInit {
     )
   }
 
+  public onDeleteEmployee(employee: Empleado){
+    this.empleado = employee;
+  }
+
   //Se elimina el empleado dado su id
   public eliminarEmpleado(id: number): void {
-    //if (confirm("Are you sure to delete " + empleado.email)) {
-      console.log("Implement delete functionality here");
       this.empleadoServicio.borrarEmpleado(id).subscribe(
         () => {
-
           this.obtenerEmpleados();
         },
         (error: HttpErrorResponse) => {
