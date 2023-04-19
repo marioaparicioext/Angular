@@ -20,15 +20,32 @@
             <td>{{empleado.email}}</td>
             <td>{{empleado.rol.descripcion}}</td>
 
-            <td><button class="buttonDelete" (click)="eliminarEmpleado(empleado.id)">Eliminar</button></td>
-            <td><button class="buttonVacation" [routerLink]="['/vacaciones/listar/', empleado.id]">Vacaciones</button>
-            </td>
+            <td><button type="button" class="buttonDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" >Eliminar</button></td>
+            <td><button class="buttonVacation" [routerLink]="['/vacaciones/listar/', empleado.id]">Vacaciones</button></td>
             <td><button class="buttonEdit" [routerLink]="['/empleados/modificar/', empleado.id]">Editar</button></td>
 
         </tr>
     </tbody>
+    
     <div class="col-md-3"></div>
 </table>
 <div class="div-center " style="text-align: center;"><button class="buttonCreate" [routerLink]="['/empleados/anadir/']">Anadir nuevo empleado</button></div>
 
 </html>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro de que desea borrar a pepito de la lista de empleados?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="buttonDelete" (click)="eliminarEmpleado(4)">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>

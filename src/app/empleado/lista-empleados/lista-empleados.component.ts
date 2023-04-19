@@ -29,14 +29,17 @@ export class ListaEmpleadosComponent implements OnInit {
 
   //Se elimina el empleado dado su id
   public eliminarEmpleado(id: number): void {
-    this.empleadoServicio.borrarEmpleado(id).subscribe(
-      () => {
+    //if (confirm("Are you sure to delete " + empleado.email)) {
+      console.log("Implement delete functionality here");
+      this.empleadoServicio.borrarEmpleado(id).subscribe(
+        () => {
 
-        this.obtenerEmpleados();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+          this.obtenerEmpleados();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      )
+    
   }
 }
