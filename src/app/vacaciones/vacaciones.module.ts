@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { VacacionesEmpleadoComponent } from './vacaciones-empleado/vacaciones-empleado.component';
 import { AnadirVacacionesComponent } from './anadir-vacaciones/anadir-vacaciones.component';
 import { EditarVacacionesComponent } from './editar-vacaciones/editar-vacaciones.component';
+import { DirectivasModule } from '../directivas/directivas.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { EditarVacacionesComponent } from './editar-vacaciones/editar-vacaciones
   imports: [
     CommonModule,
     SharedModule,
+    DirectivasModule,
     RouterModule.forChild([])
   ]
 })
