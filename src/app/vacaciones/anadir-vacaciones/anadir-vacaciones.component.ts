@@ -64,15 +64,26 @@ export class AnadirVacacionesComponent {
     return day !== 0 && day !== 6 && !this.fechasInhabilitadas.find(x=>x.getTime()==time);
   }
 
+
+
+
+  isNotWeekend (d: Date) {
+    const day = d.getDay();
+    const time = d.getTime();
+    /* Prevent Saturday and Sunday for select. */
+    return day !== 0 && day !== 6
+  }
+
   public obtenerNumeroDiasFinDeSemana(date: Date, numeroDiasVacaciones: number){
     var weekendDayCount = 0;
     const dateCopy = new Date(date);
     const toDate = new Date(date);
-    console.log(toDate);
+    console.log("VOY A REVISAR HASTA (PREVIO) ",toDate);
     toDate.setDate(toDate.getDate()+numeroDiasVacaciones);
+    console.log("VOY A REVISAR HASTA ",toDate);
     while(dateCopy < toDate){
         dateCopy.setDate(dateCopy.getDate() + 1);
-        if(dateCopy.getDay() === 0 || dateCopy.getDay() == 6){
+        if(dateCopy.getDay() == 0 || dateCopy.getDay() == 6){
             ++weekendDayCount;
         }
     }
@@ -80,28 +91,82 @@ export class AnadirVacacionesComponent {
     return weekendDayCount ;
   }
 
+
+  public obtenerNumeroDiasFinDeSemana2(date: Date, date1: Date){
+    let finesDeSemana = [];
+    const dateCopy = new Date(date);
+    const dateCopy2 = new Date(date1);
+    while(dateCopy < dateCopy2){
+        dateCopy.setDate(dateCopy.getDate() + 1);
+        if(dateCopy.getDay() === 0 || dateCopy.getDay() == 6){
+            finesDeSemana.push(dateCopy);
+        }
+    }
+    return finesDeSemana ;
+  }
+
+  obtenerNumeroDiasFinDeSemana3(date: Date, numeroDiasVacaciones: number) {
+    let finesDeSemana: Date[] = [];
+    const dateCopy = new Date(date);
+    const toDate = new Date(date);
+    console.log(toDate);
+    toDate.setDate(toDate.getDate()+numeroDiasVacaciones);
+    while(dateCopy < toDate){
+        dateCopy.setDate(dateCopy.getDate() + 1);
+        if(dateCopy.getDay() === 0 || dateCopy.getDay() == 6){
+            finesDeSemana.push(dateCopy);
+        }
+    }
+    return finesDeSemana ;
+  }
+
   marcarLimite(date: Date){
+    const dateCopy = new Date(date);
     const tomorrow = new Date(date);
     let numeroDeshabilitados: number;
-    const numeroDiasVacaciones=7;
+    const numeroDiasVacaciones=6;
     numeroDeshabilitados = this.obtenerNumeroDiasFinDeSemana(date, numeroDiasVacaciones);
     console.log("HAY DIAS DE FINDE",numeroDeshabilitados);
-    // if(this.fechasInhabilitadas.length!=0){
-    //   this.fechasInhabilitadas.forEach(dia => {
-    //   });
-      
-    // }
     console.log("FECHA FIN",tomorrow);
     tomorrow.setDate(date.getDate()+numeroDiasVacaciones-1+numeroDeshabilitados);
     console.log("FECHA FIN",tomorrow);
+    console.log("FECHA CON LA QUE VERIFICAMOS LAS FECHAS INHABILITADAS",dateCopy);
+    if(this.fechasInhabilitadas.length!=0){
+      let numeroDiasDisponibles =  0;
+      let incluida = 1;
+      while(numeroDiasDisponibles<numeroDiasVacaciones+numeroDeshabilitados){
+        console.log("VERIFICANDO DÍA A DÍA", numeroDiasDisponibles);
+        this.fechasInhabilitadas.forEach(fecha => {
+          if((fecha.getTime() == dateCopy.getTime()) && this.isNotWeekend(dateCopy)){
+            console.log("LA FECHA INCLUIDA ES: ", dateCopy);
+            tomorrow.setDate(dateCopy.getDate());
+            console.log("LA FECHA TOMORROW SE ASIGNA A: ", dateCopy);
+            incluida=0;
+          }
+        });
+        if(incluida==0){
+          break;
+        }
+        dateCopy.setDate(dateCopy.getDate()+1);
+        numeroDiasDisponibles++;
+      }
+    }
+    if(tomorrow.getDay()==0){
+      tomorrow.setDate(tomorrow.getDate()+1);
+    }
+    if(tomorrow.getDay()==6){
+      tomorrow.setDate(tomorrow.getDate()+2);
+    }
+    console.log("LA FECHA LIMITE: ", tomorrow);
     this.limite = tomorrow;
-    let currentDate = new Date(date);
-    let dateSent = new Date(this.limite);
-    let days = Math.floor(Math.abs((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate()) ) /(1000 * 60 * 60 * 24)));
-    const diasElegidos = days - numeroDeshabilitados;
-    console.log(diasElegidos);
+    // let currentDate = new Date(date);
+    // let dateSent = new Date(this.limite);
+    // let days = Math.floor(Math.abs((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate()) ) /(1000 * 60 * 60 * 24)));
+    // const diasElegidos = days - numeroDeshabilitados;
+    // console.log(diasElegidos);
     this.dateAdapter.setLocale('es');
   }
+
 
   resetLimit(date: Date){
     this.limite = new Date(date.getFullYear(), 11, 31);
