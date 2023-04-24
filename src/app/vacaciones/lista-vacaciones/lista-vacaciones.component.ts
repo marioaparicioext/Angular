@@ -4,6 +4,7 @@ import { Vacaciones } from 'src/app/modelos/vacaciones';
 import { VacacionesServicio } from '../servicios/vacaciones.servicio';
 
 
+
 @Component({
   selector: 'app-lista-vacaciones',
   templateUrl: './lista-vacaciones.component.html',
@@ -14,6 +15,7 @@ export class ListaVacacionesComponent implements OnInit {
   vacaciones: Vacaciones;
   listaEstados = ["Aceptada", "Denegada", "Pendiente"];
   filtroSeleccionado = "";
+  page: number;
   constructor(private vacacionesServicio: VacacionesServicio) {
   }
 

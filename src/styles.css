@@ -60,6 +60,8 @@
     border-radius: 8px;
 }
 
+table.fixed { table-layout:auto; }
+
 .buttonAprove:hover {
     background-color: white;
     /* Green */

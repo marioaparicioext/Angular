@@ -1,59 +1,71 @@
 <!DOCTYPE html>
 <html>
 <h1 class="mt-2">Lista de Vacaciones</h1>
-<div *ngIf="!listaVacaciones || listaVacaciones.length == 0 "></div>
-<table class="table table-striped center" *ngIf="listaVacaciones && listaVacaciones.length > 0">
-    <thead class="thead-dark">
-        <tr>
-            <th>ID</th>
-            <th>Empleado</th>
-            <th>Fecha_Peticion</th>
-            <th>Fecha_Inicio</th>
-            <th>Fecha_Fin</th>
-            <th>Estado
-                <select [(ngModel)]="filtroSeleccionado">
-                    <option value="">Todos</option>
-                    <option *ngFor="let estado of listaEstados" [value]="estado">{{estado}}</option>
-                </select>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let vacaciones of listaVacaciones | estadosFitro:filtroSeleccionado" [ngSwitch]="vacaciones.estado">
-            <td>{{vacaciones.id}}</td>
-            <td>{{vacaciones.empleado.email}}</td>
-            <td>{{vacaciones.fechaSolicitud | conversorFecha:"dd/MM/yyyy"}}</td>
-            <td>{{vacaciones.fechaInicio | conversorFecha:"dd/MM/yyyy"}}</td>
-            <td>{{vacaciones.fechaFin | conversorFecha:"dd/MM/yyyy"}}</td>
-            <td>
-                <span *ngSwitchCase="'Pendiente'" class="pendiente">{{vacaciones.estado}}</span>
-                <span *ngSwitchCase="'Aceptada'" class="aceptada">{{vacaciones.estado}}</span>
-                <span *ngSwitchCase="'Denegada'" class="denegada">{{vacaciones.estado}}</span>
-            </td>
-            <td><button type="button" class="buttonDelete" (click)="onDeleteVacaciones(vacaciones)" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</button></td>
-            <td><button class="buttonDeny"  (click)="denegarVacaciones(vacaciones.id)"><i class="fa-solid fa-xmark"></i></button></td>
-            <td><button class="buttonAprove"  (click)="aprobarVacaciones(vacaciones.id)"><i class="fa-solid fa-check"></i></button></td>
-        </tr>
-    </tbody>
-    <div class = "col-md-3"></div>
+<div *ngIf="!listaVacaciones || listaVacaciones.length == 0 ">No hay datos para mostrar</div>
+<table class="table table-striped center fixed" *ngIf="listaVacaciones && listaVacaciones.length > 0">
+  <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Empleado</th>
+      <th>Fecha_Peticion</th>
+      <th>Fecha_Inicio</th>
+      <th>Fecha_Fin</th>
+      <th>Estado
+        <select [(ngModel)]="filtroSeleccionado">
+          <option value="">Todos</option>
+          <option *ngFor="let estado of listaEstados" [value]="estado">{{estado}}</option>
+        </select>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let vacaciones of listaVacaciones | estadosFitro:filtroSeleccionado | paginate: { itemsPerPage: 5, currentPage: page}"
+      [ngSwitch]="vacaciones.estado">
+      <td>{{vacaciones.id}}</td>
+      <td>{{vacaciones.empleado.email}}</td>
+      <td>{{vacaciones.fechaSolicitud | conversorFecha:"dd/MM/yyyy"}}</td>
+      <td>{{vacaciones.fechaInicio | conversorFecha:"dd/MM/yyyy"}}</td>
+      <td>{{vacaciones.fechaFin | conversorFecha:"dd/MM/yyyy"}}</td>
+      <td>
+        <span *ngSwitchCase="'Pendiente'" class="pendiente">{{vacaciones.estado}}</span>
+        <span *ngSwitchCase="'Aceptada'" class="aceptada">{{vacaciones.estado}}</span>
+        <span *ngSwitchCase="'Denegada'" class="denegada">{{vacaciones.estado}}</span>
+      </td>
+      <td><button type="button" class="buttonDelete" (click)="onDeleteVacaciones(vacaciones)" data-bs-toggle="modal"
+          data-bs-target="#deleteModal">Eliminar</button></td>
+      <div *ngIf="vacaciones.estado == 'Pendiente'">
+        <td ><button class="buttonDeny"
+            (click)="denegarVacaciones(vacaciones.id)"><i class="fa-solid fa-xmark"></i></button></td>
+        <td ><button class="buttonAprove" (click)="aprobarVacaciones(vacaciones.id)"><i
+              class="fa-solid fa-check"></i></button></td>
+      </div>
+    </tr>
+  </tbody>
+  <div class="col-md-3"></div>
 </table>
+<div class="text-center">
+  <pagination-controls (pageChange)="page = $event" (pageBoundsCorrection)="page = 1" previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
+</div>
 
 </html>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel"><b>Borrar Vacaciones</b></h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>¿Estás seguro de que desea borrar esta solicitud de la lista de vacaciones?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="buttonDelete" (click)="eliminarVacaciones(vacaciones.id)" data-bs-dismiss="modal">Confirmar</button>
-        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de que desea borrar esta solicitud de la lista de vacaciones?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="buttonDelete" (click)="eliminarVacaciones(vacaciones.id)"
+          data-bs-dismiss="modal">Confirmar</button>
       </div>
     </div>
+  </div>
 </div>

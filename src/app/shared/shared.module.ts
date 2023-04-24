@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialsModule } from './materials/materials.module';
 import { ConversorFechaPipe } from '../pipes/conversor-fecha.pipe';
 import { EstadosFitroPipe } from '../pipes/estados-fitro.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [ConversorFechaPipe, EstadosFitroPipe],
@@ -12,7 +13,8 @@ import { EstadosFitroPipe } from '../pipes/estados-fitro.pipe';
     CommonModule,
     FormsModule,
     MaterialsModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   exports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { EstadosFitroPipe } from '../pipes/estados-fitro.pipe';
     ConversorFechaPipe,
     EstadosFitroPipe,
     MaterialsModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ]
 })
 export class SharedModule { }
