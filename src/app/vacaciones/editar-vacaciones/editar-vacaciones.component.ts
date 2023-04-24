@@ -5,13 +5,14 @@ import { Vacaciones } from 'src/app/modelos/vacaciones';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
+import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-editar-vacaciones',
   templateUrl: './editar-vacaciones.component.html',
   styleUrls: ['./editar-vacaciones.component.css']
 })
-export class EditarVacacionesComponent implements OnInit {
+export class EditarVacacionesComponent{
   hoy = new Date();
   vacaciones = new Vacaciones();
   vacacionesEmpleado: Vacaciones[];
@@ -22,42 +23,27 @@ export class EditarVacacionesComponent implements OnInit {
     private router: Router,
     private vacacionesServicio: VacacionesServicio,
     private dateAdapter: DateAdapter<Date>) {
-      this.cargarDatos();
-      this.empleadoId = +localStorage.getItem("id")!;
-      this.vacacionesServicio.obtenerVacacionesPorEmpleado(this.empleadoId).subscribe(
-        (response: Vacaciones[]) => {
-          this.vacacionesEmpleado = response;
-          console.log(this.vacacionesEmpleado);
-          this.fechasInhabilitadas = this.deshabilitarRangos(this.vacacionesEmpleado);
-          console.log("Fechas inhabilitadas" + this.fechasInhabilitadas);
-          this.fechasInhabilitadas.sort((a,b)=> a.getTime() - b.getTime())
-          
-        },
-        (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
-      )
-  }
-  
-
-  ngOnInit(): void {
     this.cargarDatos();
 
   }
 
 
-  //Carga los datos de las vacaciones dado el id de las vacaciones
   public cargarDatos(): void {
     const idRuta = this.route.snapshot.paramMap.get('id');
     console.log(idRuta);
     if (idRuta != null) {
-      this.vacacionesServicio.obtenerVacacionesPorId(+idRuta).subscribe((response: Vacaciones) => {
+      this.vacacionesServicio.obtenerVacacionesPorId(+idRuta).pipe(
+        concatMap((response : Vacaciones) => {
         this.vacaciones = response;
         this.limite = this.vacaciones.fechaFin;
-      },
-        (error: HttpErrorResponse) => {
-          alert(error.message);
-        });
+        this.empleadoId = +localStorage.getItem("id")!;
+        return this.vacacionesServicio.obtenerVacacionesPorEmpleado(this.empleadoId)
+      })
+      ).subscribe((response2: Vacaciones[]) => {
+        this.vacacionesEmpleado = response2;
+        this.fechasInhabilitadas = this.deshabilitarRangos(this.vacacionesEmpleado);
+        this.fechasInhabilitadas.sort((a,b)=> a.getTime() - b.getTime());
+      });
     } else {
       alert("idRuta es nulo");
     }
@@ -73,23 +59,6 @@ export class EditarVacacionesComponent implements OnInit {
     );
   }
 
-  // public anadirVacaciones(form: NgForm): void {
-  //   const startDate = this.vacaciones.fechaInicio;
-  //   const endDate = this.vacaciones.fechaFin;
-  //   console.log(startDate + " INICIO");
-  //   this.empleadoServicio.obtenerEmpleadoPorId(this.empleadoId).pipe(
-  //     concatMap((empleado) => {
-  //       this.vacaciones.fechaSolicitud = new Date();
-  //       this.vacaciones.fechaInicio = startDate;
-  //       this.vacaciones.fechaFin = endDate;
-  //       this.vacaciones.estado = "Pendiente";
-  //       this.vacaciones.empleado = empleado;
-  //       return this.vacacionesServicio.anadirVacaciones(this.vacaciones);
-  //     })
-  //   ).subscribe((vacaciones) => {
-  //     this.router.navigate([`/vacaciones/listar/${this.empleadoId}`]);
-  //   });
-  // }
   deshabilitarRangos(vacacionesEmpleado: Vacaciones[]): Date[] {
     this.dateAdapter.setLocale('es');
     let dateArray: Date[] = [];
