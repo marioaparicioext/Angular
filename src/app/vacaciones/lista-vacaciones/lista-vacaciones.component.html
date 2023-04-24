@@ -34,12 +34,12 @@
       </td>
       <td><button type="button" class="buttonDelete" (click)="onDeleteVacaciones(vacaciones)" data-bs-toggle="modal"
           data-bs-target="#deleteModal">Eliminar</button></td>
-      <div *ngIf="vacaciones.estado == 'Pendiente'">
-        <td ><button class="buttonDeny"
+      
+        <td ><button [hidden] ="vacaciones.estado == 'Denegada'"  class="buttonDeny"
             (click)="denegarVacaciones(vacaciones.id)"><i class="fa-solid fa-xmark"></i></button></td>
-        <td ><button class="buttonAprove" (click)="aprobarVacaciones(vacaciones.id)"><i
-              class="fa-solid fa-check"></i></button></td>
-      </div>
+        <td ><button [hidden]="vacaciones.estado == 'Aceptada'"  class="buttonAprove" 
+          (click)="aprobarVacaciones(vacaciones.id)"><i class="fa-solid fa-check"></i></button></td>
+      
     </tr>
   </tbody>
   <div class="col-md-3"></div>

@@ -11,6 +11,7 @@ import { EmpleadoServicio } from '../servicios/empleado.servicio';
 export class ListaEmpleadosComponent implements OnInit {
   empleados: Empleado[];
   public empleado: Empleado;
+  page: number;
   constructor(private empleadoServicio: EmpleadoServicio) {
   }
   ngOnInit(): void {
