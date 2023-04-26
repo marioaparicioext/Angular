@@ -188,12 +188,12 @@ table.center {
 }
 
 .letra-footer {
-    color:white;
+    color:gray;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .letra-footer:hover{
-    color:white;
+    color:gray;
     text-decoration: none;
 }
 html,
