@@ -5,14 +5,18 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { DirectivasModule } from '../directivas/directivas.module';
+import { FooterMenuComponent } from './footer-menu/footer-menu.component';
+
 
 
 @NgModule({
   declarations: [
-    TopMenuComponent
+    TopMenuComponent,
+    FooterMenuComponent
   ],
   exports: [
-    TopMenuComponent
+    TopMenuComponent,
+    FooterMenuComponent
   ],
 
   imports: [
