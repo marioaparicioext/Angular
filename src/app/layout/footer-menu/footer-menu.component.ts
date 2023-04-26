@@ -15,7 +15,7 @@ export class FooterMenuComponent {
     if(localStorage.getItem("token")){
       this.router.navigate(['/inicio']);
     }else{
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     }
     
   }
