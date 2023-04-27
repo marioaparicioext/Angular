@@ -1,7 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Empleado } from './modelos/empleado';
-import { EmpleadoServicio } from './empleado/servicios/empleado.servicio';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +9,11 @@ import { EmpleadoServicio } from './empleado/servicios/empleado.servicio';
 export class AppComponent implements OnInit {
   public empleados: Empleado[];
 
-  constructor(private empleadoServicio: EmpleadoServicio) { }
+  constructor() { 
+
+  }
   ngOnInit(): void {
 
   }
-
-
-
 
 }
