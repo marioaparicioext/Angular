@@ -12,10 +12,12 @@ export class ListaEmpleadosComponent implements OnInit {
   empleados: Empleado[];
   public empleado: Empleado;
   page: number;
+  emailFiltro: string = "";
   constructor(private empleadoServicio: EmpleadoServicio) {
   }
   ngOnInit(): void {
     this.obtenerEmpleados();
+
   }
   //Se obtienen los empleados 
   public obtenerEmpleados(): void {
