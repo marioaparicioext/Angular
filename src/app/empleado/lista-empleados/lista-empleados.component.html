@@ -14,7 +14,7 @@
       <th>Rol
         <select [(ngModel)]="rolFiltro">
           <option value="">Todos</option>
-          <option *ngFor="let rol of listaRoles" [value]="rol">{{rol.descripcion}}</option>
+          <option *ngFor="let rol of listaRoles">{{rol.descripcion}}</option>
         </select>
       </th>
 
