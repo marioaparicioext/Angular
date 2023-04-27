@@ -11,6 +11,7 @@ import { VacacionesServicio } from '../servicios/vacaciones.servicio';
   styleUrls: ['./vacaciones-empleado.component.css']
 })
 export class VacacionesEmpleadoComponent implements OnInit {
+  vacaciones: Vacaciones;
   listaVacaciones: Vacaciones[];
   listaEstados = ["Aceptada", "Denegada", "Pendiente"];
   filtroSeleccionado = "";
@@ -39,5 +40,22 @@ export class VacacionesEmpleadoComponent implements OnInit {
     } else {
       alert("idRuta es nulo")
     }
+  }
+
+  public onDeleteVacaciones(vacaciones: Vacaciones){
+    this.vacaciones=vacaciones;
+  }
+
+
+  //Se elimina las vacaciones dado el id de las mismas
+  public eliminarVacaciones(id: number): void {
+    this.vacacionesServicio.borrarVacaciones(id).subscribe(
+      () => {
+        this.obtenerVacacionesId();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
   }
 }
