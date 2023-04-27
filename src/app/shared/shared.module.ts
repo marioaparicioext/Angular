@@ -7,10 +7,11 @@ import { ConversorFechaPipe } from '../pipes/conversor-fecha.pipe';
 import { EstadosFitroPipe } from '../pipes/estados-fitro.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EmpleadoFilterPipe } from '../pipes/empleado-filter.pipe';
+import { RolFiltroPipe } from '../pipes/rol-filtro.pipe';
 
 
 @NgModule({
-  declarations: [ConversorFechaPipe, EstadosFitroPipe, EmpleadoFilterPipe],
+  declarations: [ConversorFechaPipe, EstadosFitroPipe, EmpleadoFilterPipe,  RolFiltroPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,7 +27,8 @@ import { EmpleadoFilterPipe } from '../pipes/empleado-filter.pipe';
     MaterialsModule,
     RouterModule,
     NgxPaginationModule,
-    EmpleadoFilterPipe
+    EmpleadoFilterPipe,
+    RolFiltroPipe
   ]
 })
 export class SharedModule { }

@@ -2,6 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Empleado } from 'src/app/modelos/empleado';
 import { EmpleadoServicio } from '../servicios/empleado.servicio';
+import { RolServicio } from 'src/app/rol/servicios/rol.servicio';
+import { Rol } from 'src/app/modelos/rol';
 
 @Component({
   selector: 'app-lista-empleados',
@@ -13,11 +15,23 @@ export class ListaEmpleadosComponent implements OnInit {
   public empleado: Empleado;
   page: number;
   emailFiltro: string = "";
-  constructor(private empleadoServicio: EmpleadoServicio) {
+  rolFiltro: string = "";
+  listaRoles: Rol[];
+  constructor(private empleadoServicio: EmpleadoServicio, private rolServicio: RolServicio) {
   }
   ngOnInit(): void {
+    this.obtenerRoles();
     this.obtenerEmpleados();
+    
+  }
 
+  public obtenerRoles(): void {
+    this.rolServicio.obtenerRoles().subscribe((response: Rol[]) => {
+      this.listaRoles = response;
+    },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
   }
   //Se obtienen los empleados 
   public obtenerEmpleados(): void {

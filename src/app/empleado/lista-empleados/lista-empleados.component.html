@@ -11,12 +11,18 @@
       <th>Nombre</th>
       <th>Apellidos</th>
       <th>Email</th>
-      <th>Rol</th>
+      <th>Rol
+        <select [(ngModel)]="rolFiltro">
+          <option value="">Todos</option>
+          <option *ngFor="let rol of listaRoles" [value]="rol">{{rol.descripcion}}</option>
+        </select>
+      </th>
+
       <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" [(ngModel)]="emailFiltro">
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let empleado of empleados  | empleadoFilter:emailFiltro | paginate: { itemsPerPage: 5, currentPage: page}">
+    <tr *ngFor="let empleado of empleados  | empleadoFilter:emailFiltro | rolFiltro:rolFiltro| paginate: { itemsPerPage: 5, currentPage: page}">
       <td>{{empleado.id}}</td>
       <td>{{empleado.nombre}}</td>
       <td>{{empleado.apellidos}}</td>
