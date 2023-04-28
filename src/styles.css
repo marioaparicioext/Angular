@@ -183,6 +183,12 @@ table.center {
     margin-right: 5%;
 }
 
+input.center {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .clickable {
     cursor:pointer;
 }

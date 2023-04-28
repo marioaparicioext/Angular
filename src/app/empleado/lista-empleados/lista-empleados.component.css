@@ -79,3 +79,24 @@
     color: black;
     border: 1px solid black;
 }
+
+/* .table-container input[type="search"]{
+   
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.table-container{
+    position: relative;
+    padding-top: 30px;
+
+}
+
+.table-container table{
+    border-collapse: collapse;
+    width: 100%;
+} */
